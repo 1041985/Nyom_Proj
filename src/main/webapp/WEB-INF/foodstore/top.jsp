@@ -32,12 +32,12 @@
 <!--                         <a href="contact.html" class="nav-item nav-link">Contact</a> -->
                     </div>
                     <c:if test="${loginInfo eq null}">
-	                    <a href="" class="btn btn-primary py-2 px-4">Login</a> &nbsp;
-	                    <a href="" class="btn btn-primary py-2 px-4">회원가입</a>
+	                    <a href="login.mem" class="btn btn-primary py-2 px-4">Login</a> &nbsp;
+	                    <a href="join.mem" class="btn btn-primary py-2 px-4">회원가입</a>
                     </c:if>
                     <c:if test="${loginInfo ne null}">
-	                    <a href="" class="btn btn-primary py-2 px-4">Logout</a> &nbsp;
-	                    <a href="" class="btn btn-primary py-2 px-4">MyPage</a>
+	                    <a href="logout.mem" class="btn btn-primary py-2 px-4">Logout</a> &nbsp;
+	                    <a href="mypage.mem" class="btn btn-primary py-2 px-4">MyPage</a>
                     </c:if>
                 </div>
             </nav>
