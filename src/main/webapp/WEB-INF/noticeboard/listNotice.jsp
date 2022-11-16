@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%@ include file="../common/common.jsp" %>
-    
-    
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,7 +12,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="resourcesimg/favicon.ico" rel="icon">
+    <link href="resources/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,45 +44,9 @@
             </div>
         </div>
         <!-- Spinner End -->
-
- 
-        <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0">
-                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>nyom</h1>
-                    <img src="./resources/img/검정이미지.jpg" alt="Logo" height="5px">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Service</a>
-                        <a href="menu.html" class="nav-item nav-link">Menu</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="booking.html" class="dropdown-item">Booking</a>
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                    </div>
-                    <a href="" class="btn btn-primary py-2 px-4">Book A Table</a>
-                </div>
-            </nav> 
             
+<%@ include file="/WEB-INF/foodstore/top.jsp"  %>  
 
-
-        </div>
-        <!-- Navbar & Hero End -->
-
-<br><br><br><br>
-
-<a href="insert.not" class="nav-item nav-link">공지사항 등록</a>
 <a href="update.not" class="nav-item nav-link">공지사항 수정</a>
 
 <body>
@@ -96,44 +57,50 @@
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal">Noitce list</h5>
                     <h1 class="mb-5">공지사항</h1>
                 </div>
+                 
                 <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
 					<!-- 리스트 삭제 -->
 
                             <div class="row g-2">
                             
-                            	<div class="col-lg-1"></div>
-                                <div class="col-lg-9">
+                            	<div class="col-lg-2"></div>
+                                <div class="col-lg-8">
+                              
+                                <c:forEach var="notice"  items="${lists}">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-1.jpg" alt="" style="width: 80px;">
+									
                                         <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>제목: 안내드립니다 : ${notice.subject}</span>
-                                                <span class="text-primary">작성자: ${notice.writer}</span>
+                          					<h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <span>[공지] ${notice.subject}</span>
+                                                <span class="text-primary"> ${notice.writer}</span>
                                             </h5>
                                             <small class="fst-italic">
-                                            	<span style="display:inline-block; width:45%; background-color:white">번호: ${notice.no}</span> 
-                                            	<span style="display:inline-block; width:45%; background-color:white">작성일: ${notice.reg_date}</span>
-                                            	<span >조회수: ${notice.readcount}</span>
-                                            </small>
-                                        </div>
+                                        <!--    <span style="display:inline-block; width:45%; background-color:white">번호: ${notice.no}</span> 
+                                            	<span style="display:inline-block; width:45%; background-color:white">조회수: ${notice.readcount}</span>  --> 
+                                            	<span > 
+                                            		<fmt:parseDate var="notice_date" value="${notice.reg_date}" pattern="yyyy-MM-dd"/>
+                                            		<fmt:formatDate var="reg_date" value="${notice_date}" pattern="yyyy-MM-dd"/>
+                                            	${reg_date}
+                                            	</span>
+                                            </small><br>
+                                         </div>
+                                        </div>                                   
 
-									<c:forEach var="notice"  items="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>${notice.no}</span>
-                                                <span>${notice.subject}</span>
-                                                <span class="text-primary">${notice.readcount}</span>
-                                            </h5>
-                                            <small class="fst-italic">${notice.reg_date}</small>
-                                        </div>                                        
-                                     </c:forEach>   
-                                    </div>
+                                     </c:forEach> 
+                                    </div>                                         
+                             	 <div class="col-lg-1"></div>
                                 </div>
-
                             </div>
-                        </div>
-
-
+						<center>
+							${pageInfo.pageNumber}	  
+						</center>
+						
+					 <c:if test="${loginInfo.member_id eq admin}">	
+						<div class="col-lg-3" style="float:right;">
+        	            	<a href="insert.not" class="btn btn-primary py-2 px-4">등록</a> 
+            	        </div>                          
+					</c:if>	
+                </div>
             </div>
         </div>
         <!-- Menu End -->

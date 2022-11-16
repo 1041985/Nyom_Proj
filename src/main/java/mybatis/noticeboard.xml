@@ -4,7 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="noticeboard.model.noticeboard">
-  
+  	
+  		<select id="GetAllNotice" resultType="MyNoticeboard" >
+  			select * from notice
+  			where open = '전체공개'
+  			order by no desc
+  		</select>
+  		
+  		<select id="GetNoticeTotalCount" resultType="int">
+  			select count(*) from notice
+  			where open = '전체공개'
+  		</select>
+  		
+  		<insert id="InsertNotice">
+  			insert into notice
+  			values(notiseq.nextval,#{subject},#{writer},#{reg_date},
+  				#{open},#{content},#{image},#{readcount,jdbcType=VARCHAR})
+  		</insert>
+  		 
+  		
+  		
   </mapper>
   
   <!-- noticeboard.xml -->
