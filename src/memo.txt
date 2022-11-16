@@ -1,0 +1,155 @@
+--[찜 (Wish)]
+drop sequence wish_seq;
+create sequence wish_seq
+increment by 1
+start with 1
+minvalue 1
+nocache;
+
+DROP TABLE wish CASCADE CONSTRAINTS;
+create table wish(
+   wish_no number primary key, --pk
+   member_no number references member(member_no) on delete cascade, -- 회원(누가쓴건지) fk
+   store_no number -- 맛집(찜한 업체들) 
+);
+
+commit;
+
+-------------------------------------------------------------------------------
+
+--[공지사항 (notice)]
+         
+drop sequence notiseq;            
+create sequence notiseq            
+start with 1            
+increment by 1            
+nocache;            
+               
+drop table notice cascade constraints;            
+create table notice(            
+   no number not null primary key,      
+   subject varchar2(100) not null,   
+   writer varchar2(50) not null,               
+   reg_date date default sysdate, --작성일               
+   content varchar2(500),         
+   image varchar2(500),   
+   readcount number default 0 -- 조회수         
+);               
+   
+insert into notice(no,subject,writer,image)            
+values(notiseq.nextval,'리뷰시 오류 관련 공지사항','admin','공지사항게시판1.png');            
+insert into notice(no,subject,writer,image)         
+values(notiseq.nextval,'리뷰 참여시 이벤트(이벤트)','admin','공지사항4.png');               
+insert into notice(no,subject,writer,image)         
+values(notiseq.nextval,'자주 묻는 질문','admin','공지사항4.png');            
+
+commit;   
+
+select * from notice;    
+
+-------------------------------------------------------------------------------
+
+--member(회원)
+
+drop sequence member_seq;
+create sequence member_seq
+increment by 1
+start with 1
+nocache;
+
+drop table member cascade constraints;
+create table member(
+   member_no number primary key, --회원 번호
+   member_id varchar2(100), --회원 아이디
+   member_pw varchar2(100), --회원 비밀번호
+   member_name varchar2(100), --회원 이름
+   member_email varchar2(100), --회원 이메일
+   member_hp varchar2(100), --회원 전화번호
+   member_date date --회원 가입일
+);
+
+commit;  
+
+
+--------------------------------------------------------------------------------------
+
+업체(foodstore) 테이블
+
+drop sequence foodstore_seq;
+
+create sequence foodstore_seq
+increment by 1
+start with 1
+minvalue 1
+nocache;
+
+
+DROP TABLE foodstore CASCADE CONSTRAINTS;
+
+create table foodstore(
+store_no number primary key,
+store_name varchar2(50),--상호명
+store_addr varchar2(50),--주소
+store_tel varchar2(15),--전화번호
+business_hours varchar2(20),--영업시간
+store_img varchar2(2000),--가게이미지
+menu varchar2(100),--메뉴
+hashtag varchar2(50),--해시태그
+readcount number default 0,--조회수
+store_date date default sysdate--등록일
+);
+
+commit;  
+
+
+--------------------------------------------------------------------------------------
+
+-- Q&A 테이블
+
+drop sequence qna_seq;
+create sequence qna_seq
+increment by 1
+start with 1
+minvalue 1
+nocache;
+
+drop table qna cascade constraints;
+create table qna(
+   no number primary key,
+   subject varchar2(50) not null,
+   writer varchar2(20) not null,
+   passwd varchar2(20) not null,
+   reg_date date not null,
+   readcount number default 0,
+   ref number not null,
+   re_step number not null,
+   re_level number not null,
+   content varchar2(100) not null
+);
+
+commit;  
+
+
+--------------------------------------------------------------------------------------
+
+-- 리뷰 테이블
+
+
+drop sequence rv_seq;
+create sequence rv_seq
+increment by 1
+start with 1
+minvalue 1
+nocache;
+
+drop table review cascade constraints;
+create table review(
+   no number primary key,
+   rating number not null,
+   writer varchar2(20) not null,
+   content varchar2(100) not null,
+   img varchar2(30),
+   reg_date date not null
+);
+
+commit;
