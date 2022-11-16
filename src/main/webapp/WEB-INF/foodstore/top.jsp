@@ -20,7 +20,7 @@
                         <a href="service.html" class="nav-item nav-link">Q&A</a>
                         <a href="menu.html" class="nav-item nav-link"></a>
                         
-                        <c:if test="${loginInfo.id eq 'admin'}">
+                        <%-- <c:if test="${loginInfo.id eq 'admin'}"> --%>
                         <div class="nav-item dropdown">
                             <a href="admin.fs" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin</a>
                             <div class="dropdown-menu m-0">
@@ -28,7 +28,7 @@
                                 <a href="admin.fs" class="dropdown-item">업체 리스트</a>
                             </div>
                         </div>
-                        </c:if>
+                        <%-- </c:if> --%>
                         
 <!--                         <a href="contact.html" class="nav-item nav-link">Contact</a> -->
                     </div>
