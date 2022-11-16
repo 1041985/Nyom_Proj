@@ -44,13 +44,15 @@
         </div>
         <!-- Spinner End -->
 
+<%@ include file="top.jsp" %>
 
-        <!-- Navbar & Hero Start -->
+<!--         
+//Navbar & Hero Start
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
                 <a href="" class="navbar-brand p-0">
                     <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>nyom</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                    <img src="img/logo.png" alt="Logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
@@ -73,7 +75,8 @@
                     </div>
                     <a href="" class="btn btn-primary py-2 px-4">Book A Table</a>
                 </div>
-            </nav>
+            </nav> -->
+            
 
             <div class="container-xxl py-5 bg-dark hero-header mb-5">
                 <div class="container my-5 py-5">
@@ -745,8 +748,10 @@
         <!-- Testimonial End -->
         
 
+<%@ include file="bottom.jsp" %>
+
         <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+<!--         <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
@@ -792,7 +797,7 @@
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                             &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
 							
-							<!--/*** This template is free as long as you keep the footer authorâs credit link/attribution link/backlink. If you'd like to use the template without the footer authorâs credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+							/*** This template is free as long as you keep the footer authorâs credit link/attribution link/backlink. If you'd like to use the template without the footer authorâs credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/
 							Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a><br><br>
                             Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
                         </div>
@@ -808,14 +813,14 @@
                 </div>
             </div>
         </div>
-        <!-- Footer End -->
+        Footer End
 
 
-        <!-- Back to Top -->
+        Back to Top
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-    <!-- JavaScript Libraries -->
+    JavaScript Libraries
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="resources/lib/wow/wow.min.js"></script>
@@ -827,8 +832,8 @@
     <script src="resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <!-- Template Javascript -->
+    Template Javascript
     <script src="resources/js/main.js"></script>
 </body>
 
-</html>
+</html> -->
