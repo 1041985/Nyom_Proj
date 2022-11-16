@@ -15,4 +15,10 @@ public class MainController {
 	      return "/main";
 	   }
 	
+	@RequestMapping("admin.fs")
+	public String admin() {
+		return "/adminList";
+		
+	}
+	
 }
