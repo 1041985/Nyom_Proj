@@ -22,11 +22,10 @@
                         
                         <c:if test="${loginInfo.id eq 'admin'}">
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin</a>
+                            <a href="admin.fs" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin</a>
                             <div class="dropdown-menu m-0">
-                                <a href="booking.html" class="dropdown-item">Booking</a>
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="adminInsert.fs" class="dropdown-item">업체 등록</a>
+                                <a href="admin.fs" class="dropdown-item">업체 리스트</a>
                             </div>
                         </div>
                         </c:if>
