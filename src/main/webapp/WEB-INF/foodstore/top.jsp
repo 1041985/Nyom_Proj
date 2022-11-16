@@ -17,8 +17,7 @@
                     <div class="navbar-nav ms-auto py-0 pe-4">
                         <a href="index.html" class="nav-item nav-link active">Home</a>
                         <a href="list.not" class="nav-item nav-link">공지사항</a>
-                        <a href="service.html" class="nav-item nav-link">Q&A</a>
-                        <a href="menu.html" class="nav-item nav-link"></a>
+                        <a href="qna.qna" class="nav-item nav-link">Q&A</a>
                         
                         <c:if test="${loginInfo.id eq 'admin'}">
                         <div class="nav-item dropdown">
