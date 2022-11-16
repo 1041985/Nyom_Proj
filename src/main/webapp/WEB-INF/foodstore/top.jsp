@@ -16,9 +16,8 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
                         <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">공지사항</a>
-                        <a href="service.html" class="nav-item nav-link">Q&A</a>
-                        <a href="menu.html" class="nav-item nav-link"></a>
+                        <a href="list.not" class="nav-item nav-link">공지사항</a>
+                        <a href="qna.qna" class="nav-item nav-link">Q&A</a>
                         
                         <%-- <c:if test="${loginInfo.id eq 'admin'}"> --%>
                         <div class="nav-item dropdown">
@@ -33,12 +32,12 @@
 <!--                         <a href="contact.html" class="nav-item nav-link">Contact</a> -->
                     </div>
                     <c:if test="${loginInfo eq null}">
-	                    <a href="" class="btn btn-primary py-2 px-4">Login</a> &nbsp;
-	                    <a href="" class="btn btn-primary py-2 px-4">회원가입</a>
+	                    <a href="login.mem" class="btn btn-primary py-2 px-4">Login</a> &nbsp;
+	                    <a href="join.mem" class="btn btn-primary py-2 px-4">회원가입</a>
                     </c:if>
                     <c:if test="${loginInfo ne null}">
-	                    <a href="" class="btn btn-primary py-2 px-4">Logout</a> &nbsp;
-	                    <a href="" class="btn btn-primary py-2 px-4">MyPage</a>
+	                    <a href="logout.mem" class="btn btn-primary py-2 px-4">Logout</a> &nbsp;
+	                    <a href="mypage.mem" class="btn btn-primary py-2 px-4">MyPage</a>
                     </c:if>
                 </div>
             </nav>
