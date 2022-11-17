@@ -11,5 +11,14 @@ public class NoticeboardController {
 		return "/listNotice";
 	}
 
-
+	@RequestMapping("insert.not")
+	public String insertNotice() {
+		return "/insertNotice";
+	}
+	
+	@RequestMapping("update.not")
+	public String updateNotice() {
+		return "/updateNotice";
+	}
+	
 }
