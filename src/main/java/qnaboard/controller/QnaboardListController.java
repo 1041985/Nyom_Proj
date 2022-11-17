@@ -13,4 +13,10 @@ public class QnaboardListController {
 			
 	      return "/qna";
 	}
+	
+	@RequestMapping("form.qna")
+	public String form(HttpServletRequest request, Model model) {
+			
+	      return "/form";
+	}
 }
