@@ -15,11 +15,5 @@ public class MainController {
 	      return "/main";
 	   }
 	
-	//업체 리스트
-	@RequestMapping("admin.fs")
-	public String admin() {
-		return "/adminList";
-		
-	}
 	
 }
