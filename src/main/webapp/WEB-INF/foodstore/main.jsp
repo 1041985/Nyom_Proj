@@ -32,6 +32,10 @@
 
     <!-- Template Stylesheet -->
     <link href="resources/css/style.css" rel="stylesheet">
+    
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f170f615658584dd5344145036666a5"></script>
+    
+    
 </head>
 
 <body>
@@ -77,9 +81,9 @@
                 </div>
             </nav> -->
             
-
             <div class="container-xxl py-5 bg-dark hero-header mb-5">
-                <div class="container my-5 py-5">
+            	<div id="map" style="width:500px;height:600px;">
+<!--                <div class="container my-5 py-5">
                     <div class="row align-items-center g-5">
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="display-3 text-white animated slideInLeft">Enjoy Our<br>Delicious Meal</h1>
@@ -90,7 +94,10 @@
                             
                         </div>
                     </div>
-                </div>
+                </div> -->
+                
+                
+            </div>
             </div>
         </div>
         <!-- Navbar & Hero End -->
@@ -834,6 +841,7 @@
 
     Template Javascript
     <script src="resources/js/main.js"></script>
+    
 </body>
 
 </html> -->
