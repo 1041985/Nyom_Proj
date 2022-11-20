@@ -70,20 +70,20 @@
                                     </div>
                                 </div>
                             
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="writer" name="writer" placeholder="작성자" value="${notice.writer}" readonly="readonly">
+                                        <input type="text" class="form-control" id="writer" name="writer" placeholder="작성자"  value="admin" readonly="readonly">
                                         <label for="writer">작성자</label>
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+<%--                                 <div class="col-md-6">
                                     <div class="form-floating date" id="date3" data-target-input="nearest">
                                         <input type="text" class="form-control datetimepicker-input" id="reg_date" name="reg_date" placeholder="Date & Time"
                                         	value="${notice.reg_date}" data-target="#date3" data-toggle="datetimepicker" />
                                         <label for="reg_date">작성일</label>
                                     </div>
-                                </div>
+                                </div> --%>
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <select class="form-select" id="select1" name="open">
@@ -95,15 +95,21 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                    	<img src="" >
+                                    	<c:if test="${notice.image != null}">
+											<img height=auto width=300
+												src="<%=request.getContextPath()%>/resources/${notice.image}">
+										</c:if> 
+										<c:if test="${notice.image == null}">
+											<!-- <small> 첨부된 파일이 없습니다.</small> -->
+										</c:if><br> <br> 
                                         <input type="file" class="form-control" name="upload" id="image" placeholder="이미지" value="${notice.image}">
                                         <label for="upload">이미지파일</label>
-                                    </div>
+                                    </div>                                   
                                 </div>                                
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="content" id="content" name="content" value="${notice.content}" style="height: 200px"></textarea>
-                                        <label for="content">${notice.content}</label>
+                                        <textarea class="form-control" placeholder="content" id="content" name="content" style="height: 200px">${notice.content }</textarea>
+                                        <label for="content">내용</label>
                                     </div>
                                 </div>
 

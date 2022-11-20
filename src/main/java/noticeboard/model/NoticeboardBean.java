@@ -2,16 +2,31 @@ package noticeboard.model;
 
 import java.sql.Timestamp;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class NoticeboardBean {
 	
 	private int no; 
 	private String subject;
 	private String writer;   
 	private String open;
-	private String reg_date; //작성일               
+	private Timestamp reg_date; //작성일               
 	private String content;      
 	private String image;
 	private int readcount; //조회수  
+	
+	private MultipartFile upload;
+	
+	public MultipartFile getUpload() {
+		return upload;
+	}
+	public void setUpload(MultipartFile upload) {
+		this.upload = upload;
+		System.out.println("setUpload upload:"+upload);
+		System.out.println("upload.getName:"+upload.getName());
+		System.out.println("upload.getOriginalFilename:"+upload.getOriginalFilename());
+		this.image = upload.getOriginalFilename();		
+	}
 	
 	public int getNo() {
 		return no;
@@ -37,10 +52,10 @@ public class NoticeboardBean {
 	public void setOpen(String open) {
 		this.open = open;
 	}
-	public String getReg_date() {
+	public Timestamp getReg_date() {
 		return reg_date;
 	}
-	public void setReg_date(String reg_date) {
+	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
 	public String getContent() {
@@ -61,5 +76,6 @@ public class NoticeboardBean {
 	public void setReadcount(int readcount) {
 		this.readcount = readcount;
 	}
+	
 	
 }

@@ -70,20 +70,20 @@
                                     </div>
                                 </div>
                             
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="writer" placeholder="작성자" value="admin" readonly="readonly">
                                         <label for="writer">작성자</label>
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+<%--                                 <div class="col-md-6">
                                     <div class="form-floating date" id="date3" data-target-input="nearest">
                                         <input type="text" class="form-control datetimepicker-input" id="reg_date" name="reg_date" placeholder="Date & Time"
                                         	value="${notice.reg_date}" data-target="#date3" data-toggle="datetimepicker" />
                                         <label for="reg_date">작성일</label>
                                     </div>
-                                </div>
+                                </div> --%>
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <select class="form-select" id="select1" name="open">
