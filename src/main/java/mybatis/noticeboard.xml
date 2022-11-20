@@ -4,7 +4,58 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="noticeboard.model.noticeboard">
-  
+  	
+  		<select id="GetAllNotice" resultType="MyNoticeboard" >
+  			select * from notice
+		<if test="whatColumn == 'subject'">
+			where subject like #{keyword}
+		</if>
+		<if test="whatColumn == 'writer'">
+			where writer like #{keyword}
+		</if>  			
+  			order by no desc
+  		</select>
+  		
+  		<select id="GetNoticeTotalCount" resultType="int">
+  			select count(*) from notice
+		<if test="whatColumn == 'subject'">
+			where subject like #{keyword}
+		</if>
+		<if test="whatColumn == 'writer'">
+			where writer like #{keyword}
+		</if>  			
+  		</select>
+  		
+  		<insert id="InsertNotice">
+  			insert into notice
+  			values(notiseq.nextval,#{subject},#{writer},#{reg_date},
+  				#{open},#{content},#{image},#{readcount,jdbcType=VARCHAR})
+  		</insert>
+  		 
+  		<select id="GetNoticeDetail" resultType="MyNoticeboard">
+  			select * from notice
+  			where no = #{no}
+  		</select>
+  		
+  		<update id="ReadCountNotice">
+  			update notice
+  			set readcount = readcount+1
+  			where no = #{no}
+  		</update>
+  		
+  		<update id="UpdateNotice">
+  			update notice
+  			set subject=#{subject}, writer=#{writer}, 
+  				open=#{open},content=#{content},image=#{image}
+  			where no = #{no}
+  		</update>
+  		
+  		<delete id="DeleteNotice">
+  			delete notice
+  			where no = #{no}
+  		</delete>
+  		
+  		
   </mapper>
   
   <!-- noticeboard.xml -->

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
  <!DOCTYPE html>
 <html lang="en">
 
@@ -35,6 +35,24 @@
     <link href="resources/css/style.css" rel="stylesheet">
 </head>
 
+<style>
+	#cen{
+	  margin: auto;
+	}
+</style>
+<script>
+function delNotice(no,pageNumber) {
+	 
+    if (confirm("정말 삭제하시겠습니까?")==true) {
+       
+    	location.href="delete.not?no="+no+"&pageNumber="+pageNumber;
+    } else {
+    	location.href="detail.not?no="+no+"&pageNumber="+pageNumber;
+    	return false ; 
+    }
+}
+</script>
+
 <body>
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
@@ -62,100 +80,71 @@
 	</div>
 	<!-- Navbar & Hero End -->
 	
-	<a href="wishList.fs" class="dropdown-item">위시 리스트</a>
-	
+       <!-- 상세보기 Start -->
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Noitce list</h5>
-                    <h1 class="mb-5">공지사항</h1>
+                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Noitce ${notice.no}</h5>
+                    <h1 class="mb-5">${notice.subject}</h1>
                 </div>
                  
                 <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
 
-                	<div class="row g-2">
+                            <div class="row g-2">
                             
-                    	<div class="col-lg-2"></div>
-                   		<div class="col-lg-8">
-                        
-							<c:if test="${ fn:length(lists) eq 0 }">
-								<h2 align="center">작성된 게시글이 없습니다.</h2>
-							</c:if>
-							<c:if test="${fn:length(lists) > 0 }">      
-                                <c:forEach var="notice"  items="${lists}">            					
-
- 				<c:choose>
-					<c:when test="${fn:contains(loginInfo.member_id, 'admin')}">                                               
+                            	<div class="col-lg-2"></div>
+                                <div class="col-lg-8">
+  
                                     <div class="d-flex align-items-center">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">                                                
-                                           <h5 class="d-flex justify-content-between border-bottom pb-2">     
+									
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                        	<small class="fst-italic">
+                                            	<span style="display:inline-block; width:90%; background-color:white">글쓴이: ${notice.writer } </span>
+                                            	<span>조회수: ${notice.readcount}</span>  
+                                            </small><br>
+                          					<h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>
-                                                	<a style="color: black" href="detail.not?no=${notice.no}&pageNumber=${pageInfo.pageNumber}">
-                                                		[공지] ${notice.subject}
-                                                	</a>
+                                                	<c:if test="${notice.image !=  null }">
+                                                		<img height=auto width=800 
+                                                			src="<%=request.getContextPath()%>/resources/${notice.image}">
+                                                	</c:if>	
+                                                	<c:if test="${notice.image ==  null }">
+                                                	</c:if>
                                                 </span>
-                                                <span class="text-primary"> ${notice.writer}</span>
                                             </h5>
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                            	    <span class="fst-italic"> ${notice.content}</span>
+                                            </h5> 
                                             <small class="fst-italic"> 
                                             	<span style="display:inline-block; width:91%; background-color:white"> 
                                             		<fmt:parseDate var="notice_date" value="${notice.reg_date}" pattern="yyyy-MM-dd"/>
                                             		<fmt:formatDate var="reg_date" value="${notice_date}" pattern="yyyy-MM-dd"/>
                                             	${reg_date}
                                             	</span>
-
+                                            <c:if test ="${loginInfo.member_id eq 'admin'}">  
                                             	<span >${notice.open}</span>
-
+                                            </c:if>
                                             </small><br>
                                          </div>
                                         </div>                                   
-					</c:when>
-					<c:when test="${not fn:contains(loginInfo.member_id, 'admin')}">
-						<c:if test="${notice.open eq '전체공개'}">
-                                    <div class="d-flex align-items-center">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-											<h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>
-                                                	<a style="color: black" href="detail.not?no=${notice.no}&pageNumber=${pageInfo.pageNumber}">
-                                                		[공지] ${notice.subject}
-                                                		
-                                                		
-                                                	</a>
-                                                </span>
-                                                <span class="text-primary"> ${notice.writer}</span>
-                                            </h5>
-                                            <small class="fst-italic">
-                                            	<span style="display:inline-block; width:91%; background-color:white"> 
-                                            		<fmt:parseDate var="notice_date" value="${notice.reg_date}" pattern="yyyy-MM-dd"/>
-                                            		<fmt:formatDate var="reg_date" value="${notice_date}" pattern="yyyy-MM-dd"/>
-                                            	${reg_date}
-                                            	</span>
 
-                                            </small><br>
-                                         </div>
-                                        </div> 	
-                                        
-						</c:if>
-					</c:when>
-				</c:choose>                                        					
-                                     </c:forEach> 
-                                     </c:if>
                                     </div>                                         
                              	 <div class="col-lg-1"></div>
                                 </div>
                             </div>
-                            
-<div style="text-align:center">
-    ${pageInfo.pagingHtml }
-</div>
-						
-					 <c:if test="${loginInfo.member_id eq 'admin'}">	
-						<div class="col-lg-3" style="float:right;">
-        	            	<a href="insert.not" class="btn btn-primary py-2 px-4">등록</a> 
-            	        </div>                          
-					</c:if>	
+
+							<c:if test="${loginInfo.member_id eq 'admin'}">		
+								<div class="col-lg-3" id="cen">
+									<a href="list.not?pageNumber=${pageNumber }" class="btn btn-success py-2 px-4">목록</a>
+        		            		<a href="update.not?no=${notice.no}&pageNumber=${pageNumber}" class="btn btn-primary py-2 px-4">수정</a> 
+        	    	        		<a  class="btn btn-danger py-2 px-4" onclick="delNotice(${notice.no},${pageNumber});" >삭제</a> 
+							</c:if>	
+							<c:if test="${loginInfo.member_id ne 'admin'}">	
+								<div class="col-lg-1" id="cen">
+									<a href="list.not?pageNumber=${pageNumber }" class="btn btn-success py-2 px-4">목록</a>
+							</c:if>
+            	      </div>                          
                 </div>
-            </div>
-        </div>
         
 </body>          
         
