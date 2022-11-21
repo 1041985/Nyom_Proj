@@ -62,6 +62,7 @@
 	</div>
 	<!-- Navbar & Hero End --> 		
 
+
         <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
             <div class="row g-0">
 
@@ -77,8 +78,6 @@
                         <h1 class="text-white mb-4">공지사항 등록</h1>
                                             
                         <form method="post" action="insert.not" enctype="multipart/form-data">
-                        <input type="hidden" name="writer" value="admin">
-                        
                            <div class="row g-3">                                
                             <div class="col-md-12">
                                	<div class="form-floating">
@@ -89,7 +88,7 @@
                             
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="writer" placeholder="작성자" value="admin" readonly="readonly">
+                                        <input type="text" class="form-control" id="writer" name="writer" placeholder="작성자" value="${notice.writer}">
                                         <label for="writer">작성자</label>
                                     </div>
                                 </div>
@@ -104,8 +103,8 @@
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <select class="form-select" id="select1" name="open">
-                                          <option value="전체공개" <c:if test="${notice.open eq '전체공개'}">selected</c:if> >전체공개</option>
-                                          <option value="비공개" <c:if test="${notice.open eq '비공개'}"> selected</c:if> >비공개</option>
+                                          <option value="전체공개">전체공개</option>
+                                          <option value="비공개">비공개</option>
                                         </select>
                                         <label for="select1">공개여부</label>
                                       </div>

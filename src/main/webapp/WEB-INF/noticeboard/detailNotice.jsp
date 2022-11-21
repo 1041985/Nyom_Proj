@@ -55,6 +55,24 @@
 	</script>
 </head>
 
+<style>
+	#cen{
+	  margin: auto;
+	}
+</style>
+<script>
+function delNotice(no,pageNumber) {
+	 
+    if (confirm("정말 삭제하시겠습니까?")==true) {
+       
+    	location.href="delete.not?no="+no+"&pageNumber="+pageNumber;
+    } else {
+    	location.href="detail.not?no="+no+"&pageNumber="+pageNumber;
+    	return false ; 
+    }
+}
+</script>
+
 <body>
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
@@ -67,7 +85,6 @@
             
 <%@ include file="/WEB-INF/foodstore/top.jsp"  %>  
 
-       <!-- Menu Start -->
 
 		<div class="container-xxl py-5 bg-dark hero-header mb-5">
 			<div class="container text-center my-5 pt-5 pb-4">
@@ -150,9 +167,6 @@
 							</c:if>
             	      </div>                          
                 </div>
-
-            </div>
-        </div>
 
         
 </body>          
