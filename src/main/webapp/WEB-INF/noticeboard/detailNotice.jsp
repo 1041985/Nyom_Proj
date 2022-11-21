@@ -33,6 +33,26 @@
 
     <!-- Template Stylesheet -->
     <link href="resources/css/style.css" rel="stylesheet">
+    
+   <style>
+	#cen{
+	  margin: auto;
+	}
+	</style>
+	<script>
+
+	function delNotice(no,pageNumber) {
+	 
+    if (confirm("정말 삭제하시겠습니까?")==true) {
+       
+    	location.href="delete.not?no="+no+"&pageNumber="+pageNumber;
+    } else {
+    	location.href="detail.not?no="+no+"&pageNumber="+pageNumber;
+    	return false ; 
+    }
+
+	}
+	</script>
 </head>
 
 <style>
@@ -65,6 +85,7 @@ function delNotice(no,pageNumber) {
             
 <%@ include file="/WEB-INF/foodstore/top.jsp"  %>  
 
+
 		<div class="container-xxl py-5 bg-dark hero-header mb-5">
 			<div class="container text-center my-5 pt-5 pb-4">
 				<h1 class="display-3 text-white mb-3 animated slideInDown">FoodStore</h1>
@@ -81,6 +102,7 @@ function delNotice(no,pageNumber) {
 	<!-- Navbar & Hero End -->
 	
        <!-- 상세보기 Start -->
+
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -145,6 +167,7 @@ function delNotice(no,pageNumber) {
 							</c:if>
             	      </div>                          
                 </div>
+
         
 </body>          
         

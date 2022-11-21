@@ -61,10 +61,11 @@
 		</div>
 	</div>
 	<!-- Navbar & Hero End --> 		
-		
+
 
         <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
             <div class="row g-0">
+
                 <div class="col-md-1">
                 </div>
                 
@@ -128,6 +129,8 @@
                     </div>
                   </div>                                         
                  <div class="col-lg-1"></div>
+                </div>
+                <div class="col-md-2">
                 </div>
             </div>
         </div>

@@ -34,11 +34,13 @@
     <!-- Template Stylesheet -->
     <link href="resources/css/style.css" rel="stylesheet">
 </head>
+
 <style>
 	.div-img{
 	text-align: center; 
 	}
 </style>
+
 <body>
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
@@ -124,7 +126,9 @@
 										<c:if test="${notice.image == null}">
 											<!-- <small> 첨부된 파일이 없습니다.</small> -->
 										</c:if><br> <br> 
+
                                         </div>
+
                                         <input type="file" class="form-control" name="upload" id="image" placeholder="이미지" value="${notice.image}">
                                         <label for="upload">이미지파일</label>
                                     </div>                                   
