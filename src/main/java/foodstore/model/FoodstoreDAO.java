@@ -28,7 +28,23 @@ public class FoodstoreDAO {
 		System.out.println("insertfoodstore 성공 : "+cnt);
 		return cnt;
 	}
-
-
+	//회원의 위시리스트 가져오기
+	public List<WishBean> selectWishByMember_no(int member_no) {
+		List<WishBean> list = null;
+		list = sqlSessionTemplate.selectList(namespace+".SelectWishByMember_no", member_no);
+		return list;
+	}
+	//하나의 업체정보 가져오기
+	public FoodstoreBean getStoreByStore_no(int store_no) {
+		FoodstoreBean fb = sqlSessionTemplate.selectOne(namespace+".GetStoreByStore_no", store_no);
+		return fb;
+	}
+	//하트 삭제하기
+	public void deleteWish(WishBean wish) {
+		sqlSessionTemplate.delete(namespace+".DeleteWish", wish);
+	}
 
 }
+
+
+

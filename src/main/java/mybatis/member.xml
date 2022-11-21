@@ -3,9 +3,38 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="member.model.member">
-  
-  </mapper>
+<mapper namespace="member.model.MemberBean">
+	
+	<!-- 로그인 -->
+	<select id="SelectMemberById" resultType="MyMember">
+		select * from member
+		where member_id = #{member_id}
+	</select>
+ 	
+ 	<!-- 아이디찾기 -->
+ 	<select id="SelectIdByNameEmail" resultType="MyMember">
+ 		select member_id from member
+ 		where member_name=#{member_name} and member_email=#{member_email}
+ 	</select>
+ 	
+ 	<!-- 비밀번호찾기 -->
+ 	<select id="SelectPwByIdEmail" resultType="MyMember">
+ 		select member_pw from member
+ 		where member_id=#{member_id} and member_email=#{member_email}
+ 	</select>
+ 	
+ 	<!-- 마이페이지 비밀번호 입력 -->
+ 	<select id="SelectMemberByIdPw" resultType="MyMember">
+ 		select * from member
+ 		where member_pw=#{member_pw} and member_id=#{member_id}
+ 	</select>
+ 	
+ 	<update id="UpdateMemberById">
+ 		update member
+ 		set member_name=#{member_name}, member_pw=#{member_pw}, member_hp=#{member_hp}, member_email=#{member_email}
+ 		where member_id=#{member_id}
+ 	</update>
+</mapper>
   
   <!-- member.xml -->
   
