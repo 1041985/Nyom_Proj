@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -44,21 +44,38 @@
             </div>
         </div>
         <!-- Spinner End -->
-            
-<%@ include file="/WEB-INF/foodstore/top.jsp"  %> 	
+        
+<%@ include file="/WEB-INF/foodstore/top.jsp"  %>
 
-            <!-- Reservation Start -->
+		<div class="container-xxl py-5 bg-dark hero-header mb-5">
+			<div class="container text-center my-5 pt-5 pb-4">
+				<h1 class="display-3 text-white mb-3 animated slideInDown">FoodStore</h1>
+				<!--  <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
+                        </ol>
+                    </nav>-->
+			</div>
+		</div>
+	</div>
+	<!-- Navbar & Hero End --> 		
+
         <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
             <div class="row g-0">
-            
-            	<div class="col-lg-1"></div>	
-            	
-                <div class="col-md-2"></div>
-                <div class="col-md-6 bg-dark d-flex align-items-center">
+
+                <div class="col-md-1">
+                </div>
+                
+               <div class="col-lg-2"></div>
+               	<div class="col-lg-8">  
+                   		
+                <div class="col-md-10 bg-dark d-flex align-items-center">
                     <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
                         <h5 class="section-title ff-secondary text-start text-primary fw-normal">Notice insert</h5>
                         <h1 class="text-white mb-4">공지사항 등록</h1>
-                        
+                                            
                         <form method="post" action="insert.not" enctype="multipart/form-data">
                         <input type="hidden" name="writer" value="admin">
                         
@@ -111,14 +128,14 @@
                             </div>
                         </form>
                     </div>
+                  </div>                                         
+                 <div class="col-lg-1"></div>
                 </div>
                 <div class="col-md-2">
                 </div>
             </div>
         </div>
 
-
-        <!-- Reservation Start -->
 </body>        
         
 <%@ include file="/WEB-INF/foodstore/bottom.jsp"  %>

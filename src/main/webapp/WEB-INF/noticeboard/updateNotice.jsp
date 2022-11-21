@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -34,7 +34,13 @@
     <!-- Template Stylesheet -->
     <link href="resources/css/style.css" rel="stylesheet">
 </head>
-       
+
+<style>
+	.div-img{
+	text-align: center; 
+	}
+</style>
+
 <body>
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
@@ -44,17 +50,35 @@
             </div>
         </div>
         <!-- Spinner End -->
-            
-<%@ include file="/WEB-INF/foodstore/top.jsp"  %> 
         
-            <!-- Reservation Start -->
+<%@ include file="/WEB-INF/foodstore/top.jsp"  %>
+		
+		<div class="container-xxl py-5 bg-dark hero-header mb-5">
+			<div class="container text-center my-5 pt-5 pb-4">
+				<h1 class="display-3 text-white mb-3 animated slideInDown">FoodStore</h1>
+				<!--  <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
+                        </ol>
+                    </nav>-->
+			</div>
+		</div>
+	</div>
+	<!-- Navbar & Hero End -->
+	
+            <!-- 공지사항 수정 Start -->
         <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
             <div class="row g-0">
-           
-            	<div class="col-lg-1"></div>	
-            	
-                <div class="col-md-2"></div>
-                <div class="col-md-6 bg-dark d-flex align-items-center">
+                <div class="col-md-1">
+                </div>
+                
+                <div class="col-lg-2"></div>
+               	 <div class="col-lg-8">
+               	
+                <div class="col-md-10 bg-dark d-flex align-items-center">
+
                     <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
                         <h5 class="section-title ff-secondary text-start text-primary fw-normal">Notice update</h5>
                         <h1 class="text-white mb-4">공지사항 수정</h1>
@@ -95,13 +119,18 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-floating">
+
+                                    	<div class="div-img">
                                     	<c:if test="${notice.image != null}">
-											<img height=auto width=300
+											<img height=auto width=150
 												src="<%=request.getContextPath()%>/resources/${notice.image}">
 										</c:if> 
 										<c:if test="${notice.image == null}">
 											<!-- <small> 첨부된 파일이 없습니다.</small> -->
 										</c:if><br> <br> 
+
+                                        </div>
+
                                         <input type="file" class="form-control" name="upload" id="image" placeholder="이미지" value="${notice.image}">
                                         <label for="upload">이미지파일</label>
                                     </div>                                   
@@ -120,12 +149,12 @@
                             </div>
                         </form>
                     </div>
+                 <div class="col-lg-1"></div>
                 </div>
             </div>
         </div>
+	</div>
 
-
-        <!-- Reservation Start -->
 </body>        
         
 <%@ include file="/WEB-INF/foodstore/bottom.jsp"  %>

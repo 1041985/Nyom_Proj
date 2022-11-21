@@ -14,6 +14,22 @@
       	values(foodstore_seq.nextval,#{store_name},#{store_addr},#{store_tel},#{open_hours},#{close_hours}
             ,#{store_img},#{menu},#{hashtag},#{store_contents})
 	</insert>
+	
+	<select id="SelectWishByMember_no" resultType="foodstore.model.WishBean">
+		select * from wish
+		where member_no = #{member_no}	
+	</select>
+	
+	<select id="GetStoreByStore_no" resultType="MyFoodstore">
+		select * from foodstore
+		where store_no = #{store_no}			
+	</select>
+
+	<delete id="DeleteWish">
+		delete wish
+		where store_no = #{store_no} and member_no = #{member_no}
+	</delete>
+	
   </mapper>
   
   <!-- foodstore.xml -->

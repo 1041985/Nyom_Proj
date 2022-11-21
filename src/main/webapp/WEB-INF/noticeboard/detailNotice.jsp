@@ -1,22 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<style>
-	#cen{
-	  margin: auto;
-	}
-</style>
-<script>
-function delNotice(no,pageNumber) {
-	 
-    if (confirm("정말 삭제하시겠습니까?")==true) {
-       
-    	location.href="delete.not?no="+no+"&pageNumber="+pageNumber;
-    } else {
-    	location.href="detail.not?no="+no+"&pageNumber="+pageNumber;
-    	return false ; 
-    }
-}
-</script>
+
  <!DOCTYPE html>
 <html lang="en">
 
@@ -49,6 +33,26 @@ function delNotice(no,pageNumber) {
 
     <!-- Template Stylesheet -->
     <link href="resources/css/style.css" rel="stylesheet">
+    
+   <style>
+	#cen{
+	  margin: auto;
+	}
+	</style>
+	<script>
+
+	function delNotice(no,pageNumber) {
+	 
+    if (confirm("정말 삭제하시겠습니까?")==true) {
+       
+    	location.href="delete.not?no="+no+"&pageNumber="+pageNumber;
+    } else {
+    	location.href="detail.not?no="+no+"&pageNumber="+pageNumber;
+    	return false ; 
+    }
+
+	}
+	</script>
 </head>
 
 <body>
@@ -63,8 +67,25 @@ function delNotice(no,pageNumber) {
             
 <%@ include file="/WEB-INF/foodstore/top.jsp"  %>  
 
-<body>
        <!-- Menu Start -->
+
+		<div class="container-xxl py-5 bg-dark hero-header mb-5">
+			<div class="container text-center my-5 pt-5 pb-4">
+				<h1 class="display-3 text-white mb-3 animated slideInDown">FoodStore</h1>
+				<!--  <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
+                        </ol>
+                    </nav>-->
+			</div>
+		</div>
+	</div>
+	<!-- Navbar & Hero End -->
+	
+       <!-- 상세보기 Start -->
+
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -129,8 +150,10 @@ function delNotice(no,pageNumber) {
 							</c:if>
             	      </div>                          
                 </div>
+
             </div>
         </div>
+
         
 </body>          
         
