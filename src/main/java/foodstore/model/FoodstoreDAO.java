@@ -77,6 +77,9 @@ public class FoodstoreDAO {
 		sqlSessionTemplate.delete(namespace+".DeleteWish", wish);
 	}
 
+
+
+
 }
 
 
