@@ -10,6 +10,8 @@ public class FoodstoreBean {
 	@NotBlank(message="상호명을 입력하세요")
 	private String store_name;
 	
+	private String store_addrnum;
+	
 	@NotBlank(message="주소를 입력하세요")
 	private String store_addr;
 	
@@ -44,6 +46,40 @@ public class FoodstoreBean {
 		this.upload = upload;
 		this.store_img = upload.getOriginalFilename();
 	}
+	
+	private String addr_num;
+	private String addr_first;
+	private String addr_last;
+	
+	
+	
+	public String getAddr_num() {
+		return addr_num;
+	}
+	public void setAddr_num(String addr_num) {
+		this.addr_num = addr_num;
+	}
+	public String getAddr_first() {
+		return addr_first;
+	}
+	public void setAddr_first(String addr_first) {
+		this.addr_first = addr_first;
+	}
+	public String getAddr_last() {
+		return addr_last;
+	}
+	public void setAddr_last(String addr_last) {
+		this.addr_last = addr_last;
+	}
+	public String getStore_addrnum() {
+		return store_addrnum;
+	}
+	public void setStore_addrnum(String store_addrnum) {
+		this.store_addrnum = store_addrnum;
+	}
+	
+	
+	
 	
 	public int getStore_no() {
 		return store_no;
