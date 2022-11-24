@@ -54,11 +54,11 @@ public class InsertFoodStoreController {
 		MultipartFile multi = foodstore.getUpload();
 		System.out.println(multi.getOriginalFilename());
         
-		if(result.hasErrors()) {
-			mav.setViewName(getPage);
-			return mav;
-
-	      }
+//		if(result.hasErrors()) {
+//			mav.setViewName(getPage);
+//			return mav;
+//
+//	      }
 		
 		
 		int cnt = fdao.insertfoodstore(foodstore);	

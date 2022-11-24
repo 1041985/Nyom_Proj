@@ -41,6 +41,10 @@
 	}
 
 </style>
+
+<script type="text/javascript">
+
+</script>
 <body>
 	<div class="container-xxl bg-white p-0">
 		<!-- Spinner Start -->
@@ -94,8 +98,8 @@
 								<c:forEach var="fs" items="${lists }">
 								<tr>
 									<th scope="row">${fs.store_no }</th>
-									<td>${fs.store_name }</td>
-									<td><img src="${fullpath}/${fs.store_img }" width="80" height="80"></td>
+									<td><a href="adminDetail.fs?store_no=${fs.store_no }">${fs.store_name }</a></td>
+									<td><a href="adminDetail.fs?store_no=${fs.store_no }"><img src="${fullpath}/${fs.store_img }" width="80" height="80"></a></td>
 									<td>
 									<div class="dropdown">
                           				<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
