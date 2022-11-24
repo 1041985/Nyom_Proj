@@ -14,6 +14,36 @@
       	values(foodstore_seq.nextval,#{store_name},#{store_addr},#{store_tel},#{open_hours},#{close_hours}
             ,#{store_img},#{menu},#{hashtag},#{store_contents})
 	</insert>
+	
+	<!-- 업체상세보기 -->
+	<select id="SelectFoodstore" resultType="MyFoodstore">
+		SELECT * FROM FOODSTORE
+		WHERE store_no=#{store_no}
+	</select>
+	
+	<!-- 업체수정 -->
+	<update id="UpdateFoodstore">
+		UPDATE FOODSTORE
+		SET
+			store_name=#{store_name},
+			store_addr=#{store_addr},
+			store_tel=#{store_tel},
+			open_hours=#{open_hours},
+			close_hours=#{close_hours},
+			store_img=#{store_img},
+			menu=#{menu},
+			hashtag=#{hashtag},
+			store_contents=#{store_contents}
+		WHERE
+			store_no=#{store_no}
+	</update>
+	
+	<delete id="DeleteFoodstore">
+		DELETE FOODSTORE
+		WHERE store_no=#{store_no}
+		
+	</delete>
+	
   </mapper>
   
   <!-- foodstore.xml -->
