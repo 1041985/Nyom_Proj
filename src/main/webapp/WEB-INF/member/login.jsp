@@ -5,13 +5,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Restoran - Bootstrap Restaurant Template</title>
+    <title>NYOM</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="resourcesimg/favicon.ico" rel="icon">
+    <link href="resources/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +43,6 @@
             </div>
         </div>
         <!-- Spinner End -->
-
 
 <%@ include file="../foodstore/top.jsp" %>
 
@@ -79,13 +78,13 @@
                             <div class="row g-3">
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="id" placeholder="아이디" maxlength="50">
+                                        <input type="text" class="form-control" name="member_id" id="id" placeholder="아이디" maxlength="50" value="${memberBean.member_id}">
                                         <label for="id">아이디</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="pw" placeholder="비밀번호" maxlength="50">
+                                        <input type="password" class="form-control" name="member_pw" id="pw" placeholder="비밀번호" maxlength="50" value="${memberBean.member_pw}">
                                         <label for="pw">비밀번호</label>
                                     </div>
                                 </div>
@@ -93,9 +92,9 @@
                                     <button class="btn btn-primary w-100 py-3" type="submit">로그인</button>
                                 </div>
                                 <div class="col-12" style="text-align:center;">
-                                	<a href="">아이디 찾기</a> │ 
-                                	<a href="">비밀번호 찾기</a> │ 
-                                	<a href="">회원가입</a>
+                                	<a href="findid.mem">아이디 찾기</a> │ 
+                                	<a href="findpw.mem">비밀번호 찾기</a> │ 
+                                	<a href="join.mem">회원가입</a>
                                 </div>
                             </div>
                         </form>
@@ -103,26 +102,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content rounded-0">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- 16:9 aspect ratio -->
-                        <div class="ratio ratio-16x9">
-                            <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
-                                allow="autoplay"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- Reservation End -->        
 
-
 <%@ include file="../foodstore/bottom.jsp" %>
-

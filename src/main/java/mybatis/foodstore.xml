@@ -15,6 +15,7 @@
             ,#{store_img},#{menu},#{hashtag},#{store_contents})
 	</insert>
 	
+
 	<!-- 업체상세보기 -->
 	<select id="SelectFoodstore" resultType="MyFoodstore">
 		SELECT * FROM FOODSTORE
@@ -42,6 +43,21 @@
 		DELETE FOODSTORE
 		WHERE store_no=#{store_no}
 		
+
+	<select id="SelectWishByMember_no" resultType="foodstore.model.WishBean">
+		select * from wish
+		where member_no = #{member_no}	
+	</select>
+	
+	<select id="GetStoreByStore_no" resultType="MyFoodstore">
+		select * from foodstore
+		where store_no = #{store_no}			
+	</select>
+
+	<delete id="DeleteWish">
+		delete wish
+		where store_no = #{store_no} and member_no = #{member_no}
+
 	</delete>
 	
   </mapper>
