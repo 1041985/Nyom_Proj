@@ -21,7 +21,7 @@ public class MemberController {
 	MemberDAO memberDao;
 	
 	//로그인페이지
-	@RequestMapping("login.mem")
+	@RequestMapping(value="login.mem", method=RequestMethod.GET)
 	public String loginPage() {
 		return "/login";
 	}

@@ -116,30 +116,38 @@
 			// 주소-좌표 변환 객체를 생성합니다
 			var geocoder = new kakao.maps.services.Geocoder();
 			
-			// 주소로 좌표를 검색합니다
-			geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function(result, status) {
+			lists = window.document.myilsts.store_addr.value;
 			
-			    // 정상적으로 검색이 완료됐으면 
-			     if (status === kakao.maps.services.Status.OK) {
+			//for( var i = 0;i<lists.length;i++){
+				
+				// 주소로 좌표를 검색합니다
+				geocoder.addressSearch(i, function(result, status) {
+				
+				    // 정상적으로 검색이 완료됐으면 
+				     if (status === kakao.maps.services.Status.OK) {
+				
+				        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				
+				        // 결과값으로 받은 위치를 마커로 표시합니다
+				        var marker = new kakao.maps.Marker({
+				            map: map,
+				            position: coords
+				        });
+				
+				        // 인포윈도우로 장소에 대한 설명을 표시합니다
+				        var infowindow = new kakao.maps.InfoWindow({
+				            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+				        });
+				        infowindow.open(map, marker);
+				
+				        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+				        map.setCenter(coords);
+				    } 
 			
-			        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				
+				});    
+			//}   
 			
-			        // 결과값으로 받은 위치를 마커로 표시합니다
-			        var marker = new kakao.maps.Marker({
-			            map: map,
-			            position: coords
-			        });
-			
-			        // 인포윈도우로 장소에 대한 설명을 표시합니다
-			        var infowindow = new kakao.maps.InfoWindow({
-			            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-			        });
-			        infowindow.open(map, marker);
-			
-			        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-			        map.setCenter(coords);
-			    } 
-			});    
 			</script>
     			
         </div>
@@ -285,7 +293,7 @@
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
                             <div class="row g-4">
-                                
+                                <form name="myilsts">
                                 <c:forEach var="fs" items="${lists }">
                                 <!-- 메뉴 시작 -->
                                 <div class="col-lg-6">
@@ -302,7 +310,7 @@
                                 </div>
                                 <!-- 메뉴 끝 -->
                                </c:forEach>
-                       
+                       			</form>
                             </div>
                         </div>
                     </div>

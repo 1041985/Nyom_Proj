@@ -124,7 +124,7 @@ DROP TABLE foodstore CASCADE CONSTRAINTS;
 create table foodstore(
 store_no number primary key,
 store_name varchar2(50),--상호명
-store_addr varchar2(50),--주소
+store_addr varchar2(100),--주소
 store_tel varchar2(15),--전화번호
 open_hours varchar2(20),--오픈시간
 close_hours varchar2(20),--마감시간
@@ -132,7 +132,7 @@ store_img varchar2(2000),--가게이미지
 menu varchar2(100),--메뉴
 hashtag varchar2(50),--해시태그
 readcount number default 0,--조회수
-store_contents varchar2(50) --가게설명
+store_contents varchar2(100) --가게설명
 );
    
 
