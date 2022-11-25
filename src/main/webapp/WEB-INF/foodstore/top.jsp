@@ -15,11 +15,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="main.fs" class="nav-item nav-link active">Home</a>
                         <a href="list.not" class="nav-item nav-link">공지사항</a>
                         <a href="qna.qna" class="nav-item nav-link">Q&A</a>
                         
-                        <c:if test="${loginInfo.id eq 'admin'}">
+                        <c:if test="${loginInfo.member_id eq 'admin'}">
                         <div class="nav-item dropdown">
                             <a href="admin.fs" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin</a>
                             <div class="dropdown-menu m-0">
