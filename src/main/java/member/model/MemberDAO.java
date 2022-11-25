@@ -12,59 +12,59 @@ public class MemberDAO {
 	
 	private String namespace = "member.model.MemberBean";
 	
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	public MemberBean selectMemberById(String member_id) {
 		MemberBean login = null;
 		login = template.selectOne(namespace + ".SelectMemberById", member_id);
 		return login;
 	}
 	
-	//¾ÆÀÌµğÃ£±â
+	//ì•„ì´ë””ì°¾ê¸°
 	public MemberBean selectIdByNameEmail(MemberBean memberBean) {
 		MemberBean findid=null;
 		findid=template.selectOne(namespace + ".SelectIdByNameEmail", memberBean);
 		return findid;
 	}
 
-	//ºñ¹Ğ¹øÈ£Ã£±â
+	//ë¹„ë°€ë²ˆí˜¸ì°¾ê¸°
 	public MemberBean selectPwByIdEmail(String member_id) {
 		MemberBean findpw=null;
 		findpw=template.selectOne(namespace + ".SelectPwByIdEmail", member_id);
 		return findpw;
 	}
 	
-	//ºñ¹Ğ¹øÈ£Ã£±â ¸ŞÀÏ·Î ÀÓ½Ãºñ¹Ğ¹øÈ£ ¹ß±Ş
+	//ë¹„ë°€ë²ˆí˜¸ì°¾ê¸° ë©”ì¼ë¡œ ì„ì‹œë¹„ë°€ë²ˆí˜¸ ë°œê¸‰
 	public int updatePw(MemberBean memberBean) throws Exception {
 		int updatepw=template.update(namespace + ".UpdatePw", memberBean);
 		return updatepw;
 	}
 	
-	//¸¶ÀÌÆäÀÌÁö ºñ¹Ğ¹øÈ£ ÀÔ·Â
+	//ë§ˆì´í˜ì´ì§€ ë¹„ë°€ë²ˆí˜¸ ì…ë ¥
 	public MemberBean selectMemberByIdPw(MemberBean memberBean) {
 		MemberBean mypage=null;
 		mypage=template.selectOne(namespace + ".SelectMemberByIdPw", memberBean);
 		return mypage;
 	}
 
-	//³»Á¤º¸ ¼öÁ¤
+	//ë‚´ì •ë³´ ìˆ˜ì •
 	public int updateMemberById(MemberBean memberBean) {
 		int updatemem=template.update(namespace + ".UpdateMemberById", memberBean);
 		return updatemem;
 	}
 	
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	public int insertMember(MemberBean memberBean) {
 		int insertmem=template.insert(namespace + ".InsertMember", memberBean);
 		return insertmem;
 	}
 	
-	//È¸¿øÅ»Åğ
+	//íšŒì›íƒˆí‡´
 	public int deleteMember(String member_id) {
 		int deletemem=template.delete(namespace + ".DeleteMember", member_id);
 		return deletemem;
 	}
 	
-	//¾ÆÀÌµğ Áßº¹Ã¼Å©
+	//ì•„ì´ë”” ì¤‘ë³µì²´í¬
 	public int checkId(String member_id) {
 		int idcheck=template.selectOne(namespace + ".CheckId", member_id);
 		return idcheck;

@@ -39,11 +39,19 @@
 .col-md-6 {
 	    margin: 0 auto;
 	}
-	.err{
-		color:red;
-		font-size: 8pt;
-	}
+	
+textarea{
+      resize: vertical;
+   }
+   
+img.detail-img {
+    width: 100%;
+}
 
+.form-control:read-only {
+    background-color: #fff;
+    opacity: 1;
+}
 </style>
 <body>
 <div class="container-xxl bg-white p-0">
@@ -76,80 +84,73 @@
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal">Admin</h5>
-                    <h2 class="mb-5">업체를 등록해주세요!</h2>
+                    <h2 class="mb-5">FoodStore contents</h2>
                 
                     <div class="col-md-6">
                         <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <form:form commandName="foodstore" action="adminInsert.fs" enctype="multipart/form-data" method="POST">
+                            <form action="adminUpdate.fs" method="POST">
+                            	<div>
+                            	
+								</div>                            
                                 <div class="row g-3">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" name="store_name">
-                                            <label for="store_name">상호명</label>
-                                            <form:errors cssClass="err" path="store_name" />
+                                            <input type="text" class="form-control" name="store_name" value="${foodstore.store_name }" readonly/>                                       
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" name="store_addr">
-                                            <label for="store_addr">주소</label>
-                                            <form:errors cssClass="err" path="store_addr" />
+                                            <input type="text" class="form-control" name="store_addr" value="${foodstore.store_addr }" readonly/>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" name="store_tel">
-                                            <label for="store_tel">전화번호</label>
-                                            <form:errors cssClass="err" path="store_tel" />
+                                            <input type="text" class="form-control" name="store_tel" value="${foodstore.store_tel }" readonly/>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-floating">
-                                            <input type="time" class="form-control" name="open_hours">
-                                            <label for="open_hours">오픈시간</label>
-                                            <form:errors cssClass="err" path="open_hours" />
+                                            <input type="text" class="form-control" name="open_hours" value="${foodstore.open_hours }" readonly/>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-floating">
-                                            <input type="time" class="form-control" name="close_hours">
-                                            <label for="close_hours">마감시간</label>
-                                            <form:errors cssClass="err" path="close_hours" />
+                                            <input type="text" class="form-control" name="close_hours" value="${foodstore.close_hours }" readonly/>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="file" class="form-control" name="upload">
-                                            <label for="store_img">업체 이미지</label>
-                                            <form:errors cssClass="err" path="store_img" />
+                                            <img class="detail-img" src="${fullpath}/${foodstore.store_img }" class="form-control" name="upload">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" name="menu">
-                                            <label for="menu">메뉴</label>
-                                            <form:errors cssClass="err" path="menu" />
+                                            <input type="text" class="form-control" name="menu" value="${foodstore.menu }" readonly/>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" name="hashtag">
-                                            <label for="hashtag">해시태그</label>
-                                            <form:errors cssClass="err" path="hashtag" />
+                                            <input type="text" class="form-control" name="hashtag" value="${foodstore.hashtag }" readonly/>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control" name="store_contents" style="height: 150px"></textarea>
-                                            <label for="store_contents">업체 소개글</label>
-                                            <form:errors cssClass="err" path="store_contents" />
+                                            <textarea class="form-control" id=textarea name="store_contents" style="height: 150px" readonly>
+                                            	${foodstore.store_contents }
+                                            </textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">등록하기</button>
+                                    	<%-- <input type="hidden" name="store_no" value="${foodstore.store_no }"> --%>
+                                       <!--  <button class="btn btn-primary w-100 py-3" type="submit">수정하기</button> -->
+                                        
+                                        <a href="admin.fs" class="btn btn-primary py-2 px-4">목록으로 이동</a>
+                                        <a href="adminUpdate.fs?store_no=${foodstore.store_no }" class="btn btn-primary py-2 px-4">수정 하기</a>
+                                        
+                                        
                                     </div>
                                 </div>
-                            </form:form>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -6,18 +6,19 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class MemberBean {
 	
-	private int member_no; //È¸¿ø ¹øÈ£
-	@Pattern(regexp="^[a-z]+[a-z0-9]{7,14}$", message="¿µ¹®À¸·Î ½ÃÀÛÇØ¼­ ¿µ¹® ¶Ç´Â ¼ıÀÚ 7~14ÀÚ·Î ÀÔ·ÂÇÏ¼¼¿ä.")
-	private String member_id; //È¸¿ø ¾ÆÀÌµğ
-	@Pattern(regexp="^(?=.*\\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{7,14}$", message="¿µ¹®°ú ¼ıÀÚ¸¦ Æ÷ÇÔÇØ¼­ 7~14ÀÚ·Î ÀÔ·ÂÇÏ¼¼¿ä.")
-	private String member_pw; //È¸¿ø ºñ¹Ğ¹øÈ£
-	@Pattern(regexp="^[a-zA-Z¤¡-ÆR][a-zA-Z¤¡-ÆR ]*$", message="ÇÑ±Û ¶Ç´Â ¿µ¹®À¸·Î ÀÔ·ÂÇÏ¼¼¿ä.")
-	private String member_name; //È¸¿ø ÀÌ¸§
-	@NotBlank(message="ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇÏ¼¼¿ä.")
-	private String member_email; //È¸¿ø ÀÌ¸ŞÀÏ
-	@Pattern(regexp="^\\d{11}$", message="¼ıÀÚ¸¸ 11ÀÚ·Î ÀÔ·ÂÇÏ¼¼¿ä.")
-	private String member_hp; //È¸¿ø ÀüÈ­¹øÈ£
-	private String member_date; //È¸¿ø °¡ÀÔÀÏ
+	private int member_no; //íšŒì› ë²ˆí˜¸
+	@Pattern(regexp="^[a-z]+[a-z0-9]{7,14}$", message="ì˜ë¬¸ìœ¼ë¡œ ì‹œì‘í•´ì„œ ì˜ë¬¸ ë˜ëŠ” ìˆ«ì 7~14ìë¡œ ì…ë ¥í•˜ì„¸ìš”.")
+	private String member_id; //íšŒì› ì•„ì´ë””
+	@Pattern(regexp="^(?=.*\\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{7,14}$", message="ì˜ë¬¸ê³¼ ìˆ«ìë¥¼ í¬í•¨í•´ì„œ 7~14ìë¡œ ì…ë ¥í•˜ì„¸ìš”.")
+	private String member_pw; //íšŒì› ë¹„ë°€ë²ˆí˜¸
+	@Pattern(regexp="^[a-zA-Zã„±-í£][a-zA-Zã„±-í£ ]*$", message="í•œê¸€ ë˜ëŠ” ì˜ë¬¸ìœ¼ë¡œ ì…ë ¥í•˜ì„¸ìš”.")
+	private String member_name; //íšŒì› ì´ë¦„
+	@NotBlank(message="ì´ë©”ì¼ì„ ì…ë ¥í•˜ì„¸ìš”.")
+	private String member_email; //íšŒì› ì´ë©”ì¼
+	@Pattern(regexp="^\\d{11}$", message="ìˆ«ìë§Œ 11ìë¡œ ì…ë ¥í•˜ì„¸ìš”.")
+
+	private String member_hp; //íšŒì› ì „í™”ë²ˆí˜¸
+	private String member_date; //íšŒì› ê°€ì…ì¼
 	
 	public int getMember_no() {
 		return member_no;

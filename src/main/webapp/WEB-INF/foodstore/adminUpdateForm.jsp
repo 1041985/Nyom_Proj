@@ -39,12 +39,55 @@
 .col-md-6 {
 	    margin: 0 auto;
 	}
-	.err{
-		color:red;
-		font-size: 8pt;
-	}
+img.detail-img {
+    width: 100%;
+}
 
+.form-control:read-only {
+    background-color: #fff;
+    opacity: 1;
+}
 </style>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript">
+
+function DaumPostcode() {
+	//alert(10);
+    new daum.Postcode({
+        oncomplete: function(data) {
+            var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+            var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+				
+            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                extraRoadAddr += data.bname;
+            }
+            if(data.buildingName !== '' && data.apartment === 'Y'){
+               extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+            }
+            if(extraRoadAddr !== ''){
+                extraRoadAddr = ' (' + extraRoadAddr + ')';
+            }
+            if(fullRoadAddr !== ''){
+                fullRoadAddr += extraRoadAddr;
+            }
+            document.getElementById('postcode').value = data.zonecode; //5자리 새우편번호 사용
+            document.getElementById('roadAddress').value = fullRoadAddr;
+				
+        }
+    }).open();
+}
+
+
+//유효성사용할 예정
+	//$(document).ready(function(){
+	//	alert(0);
+		/* $('#name_check').click(function(){
+			alert(1);
+		});//name_check */
+		
+	//});//ready
+</script>
 <body>
 <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
@@ -76,80 +119,86 @@
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal">Admin</h5>
-                    <h2 class="mb-5">업체를 등록해주세요!</h2>
+                    <h2 class="mb-5">FoodStore Modified</h2>
                 
                     <div class="col-md-6">
                         <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <form:form commandName="foodstore" action="adminInsert.fs" enctype="multipart/form-data" method="POST">
+                            <form commandName="foodstore" action="adminUpdate.fs" name="f" enctype="multipart/form-data" method="POST">
+                            <input type="hidden" name="store_no" value="${foodstore.store_no }">
+                            <input type="hidden" name="originalImg" value="${foodstore.store_img }">
+                        <!--     페이징처리 추후확인하기 -->
                                 <div class="row g-3">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" name="store_name">
-                                            <label for="store_name">상호명</label>
-                                            <form:errors cssClass="err" path="store_name" />
+                                            <input type="text" class="form-control" name="store_name" value="${foodstore.store_name }">
+                                            <input type="button" id="name_check" value="중복체크">
+                                            <span id="name_msg" style="font-size:15px; font-weight:bold;"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="postcode" name="addr_num" value="${foodstore.addr_num }">
+                                            <input type="button" class="btn btn-primary py-2 px-4" value="우편번호 찾기" onClick="DaumPostcode()">
+                                          
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" name="store_addr">
-                                            <label for="store_addr">주소</label>
-                                            <form:errors cssClass="err" path="store_addr" />
+                                            <input type="text" class="form-control" id="roadAddress" name="addr_first" value="${foodstore.addr_first }">
                                         </div>
                                     </div>
+                                    
+                                    <div class="col-md-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" name="addr_last" value="${foodstore.addr_last }">
+                                        </div>
+                                    </div>
+                                    
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" name="store_tel">
+                                            <input type="text" class="form-control" name="store_tel" value="${foodstore.store_tel }">
                                             <label for="store_tel">전화번호</label>
-                                            <form:errors cssClass="err" path="store_tel" />
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-floating">
-                                            <input type="time" class="form-control" name="open_hours">
-                                            <label for="open_hours">오픈시간</label>
-                                            <form:errors cssClass="err" path="open_hours" />
+                                            <input type="time" class="form-control" name="open_hours" value="${foodstore.open_hours}">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-floating">
-                                            <input type="time" class="form-control" name="close_hours">
-                                            <label for="close_hours">마감시간</label>
-                                            <form:errors cssClass="err" path="close_hours" />
+                                            <input type="time" class="form-control" name="close_hours" value="${foodstore.close_hours }">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="file" class="form-control" name="upload">
-                                            <label for="store_img">업체 이미지</label>
-                                            <form:errors cssClass="err" path="store_img" />
+                                            <img class="detail-img" src="${fullpath}/${foodstore.store_img }" class="form-control" width=100% height=400>
+                                            <br><br>
+                                            <input type="file" class="form-control" name="upload" value="${foodstore.store_img }" required>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" name="menu">
-                                            <label for="menu">메뉴</label>
-                                            <form:errors cssClass="err" path="menu" />
+                                            <input type="text" class="form-control" name="menu" value="${foodstore.menu }">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" name="hashtag">
-                                            <label for="hashtag">해시태그</label>
-                                            <form:errors cssClass="err" path="hashtag" />
+                                            <input type="text" class="form-control" name="hashtag" value="${foodstore.hashtag }">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control" name="store_contents" style="height: 150px"></textarea>
-                                            <label for="store_contents">업체 소개글</label>
-                                            <form:errors cssClass="err" path="store_contents" />
+                                            <textarea class="form-control" name="store_contents" style="height: 150px">
+                                            	${foodstore.store_contents }
+                                            </textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">등록하기</button>
+                                        <button class="btn btn-primary w-100 py-3" type="submit">수정하기</button>
                                     </div>
                                 </div>
-                            </form:form>
+                            </form>
                         </div>
                     </div>
                 </div>

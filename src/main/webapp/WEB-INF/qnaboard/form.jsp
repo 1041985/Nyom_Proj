@@ -409,6 +409,7 @@
          -->
         <!-- Menu End -->
         <div class="wow fadeInUp" data-wow-delay="0.2s">
+        <form action="insert.qna">
         <table align="center" width="700">
         	<tr>
         		<td>
@@ -425,6 +426,7 @@
         	</tr>
         	<tr>
         		<td></td>
+        		
         	</tr>
         	<tr>
         		<td>
@@ -432,6 +434,7 @@
         		</td>
         	</tr>
         </table>
+        </form>
         </div>
 
         <!-- Footer Start -->

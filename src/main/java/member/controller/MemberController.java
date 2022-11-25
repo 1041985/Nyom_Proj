@@ -26,13 +26,15 @@ public class MemberController {
 	@Autowired
 	MemberDAO memberDao;
 	
-	//·Î±×ÀÎÆäÀÌÁö
+
+	//ë¡œê·¸ì¸í˜ì´ì§€
 	@RequestMapping("login.mem")
 	public String loginPage() {
 		return "/login";
 	}
 	
-	//·Î±×ÀÎ
+
+	//ë¡œê·¸ì¸
 	@RequestMapping(value="login.mem", method=RequestMethod.POST)
 	public String login(MemberBean memberBean,
 			HttpServletResponse response,
@@ -45,7 +47,9 @@ public class MemberController {
 		
 		if(loginInfo==null) {
 			writer.println("<script type='text/javascript'>");
-			writer.println("alert('¾ÆÀÌµğ¸¦ È®ÀÎÇØÁÖ¼¼¿ä.');");
+
+			writer.println("alert('ì•„ì´ë””ë¥¼ í™•ì¸í•´ ì£¼ì„¸ìš”.');");
+
 			writer.println("</script>");
 			writer.flush();
 			return "/login";		
@@ -58,7 +62,8 @@ public class MemberController {
 			}
 			else {
 				writer.println("<script type='text/javascript'>");
-				writer.println("alert('ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä.');");
+
+				writer.println("alert('ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ ì£¼ì„¸ìš”.');");
 				writer.println("</script>");
 				writer.flush();
 				return "/login";
@@ -66,7 +71,8 @@ public class MemberController {
 		}
 	}
 	
-	//·Î±×¾Æ¿ô
+<<<<<<< HEAD
+	//ï¿½Î±×¾Æ¿ï¿½
 	@RequestMapping("logout.mem")
 	public String logout(HttpSession session, 
 			HttpServletResponse response) throws IOException {
@@ -78,13 +84,27 @@ public class MemberController {
 		return "redirect:/main.fs";
 	}
 	
-	//¾ÆÀÌµğÃ£±âÆäÀÌÁö
+	//ï¿½ï¿½ï¿½Ìµï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+=======
+	//ë¡œê·¸ì•„ì›ƒ
+	@RequestMapping("logout.mem")
+	public String logout(HttpSession session) {
+		session.removeAttribute("loginInfo");
+		return "redirect:/main.fs";
+	}
+	
+	//ì•„ì´ë””ì°¾ê¸°í˜ì´ì§€
+>>>>>>> master
 	@RequestMapping("findid.mem")
 	public String findid() {
 		return "/findid";
 	}
 	
-	//¾ÆÀÌµğÃ£±â
+<<<<<<< HEAD
+	//ï¿½ï¿½ï¿½Ìµï¿½Ã£ï¿½ï¿½
+=======
+	//ì•„ì´ë””ì°¾ê¸°
+>>>>>>> master
 	@RequestMapping(value="findid.mem", method=RequestMethod.POST)
 	public String findid(MemberBean memberBean,
 			HttpServletResponse response,
@@ -97,14 +117,22 @@ public class MemberController {
 		
 		if(findid!=null) {
 			writer.println("<script type='text/javascript'>");
-			writer.println("alert('"+memberBean.getMember_name()+"´ÔÀÇ ¾ÆÀÌµğ´Â "+findid.getMember_id()+" ÀÔ´Ï´Ù.');");
+<<<<<<< HEAD
+			writer.println("alert('"+memberBean.getMember_name()+"ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ "+findid.getMember_id()+" ï¿½Ô´Ï´ï¿½.');");
+=======
+			writer.println("alert('"+memberBean.getMember_name()+"ë‹˜ì˜ ì•„ì´ë””ëŠ” "+findid.getMember_id()+" ì…ë‹ˆë‹¤.');");
+>>>>>>> master
 			writer.println("</script>");
 			writer.flush();
 			return "/login";
 		}
 		else if(findid==null) {
 			writer.println("<script type='text/javascript'>");
-			writer.println("alert('ÀÔ·ÂÁ¤º¸¸¦ È®ÀÎÇØÁÖ¼¼¿ä.');");
+<<<<<<< HEAD
+			writer.println("alert('ï¿½Ô·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.');");
+=======
+			writer.println("alert('ì…ë ¥ì •ë³´ë¥¼ í™•ì¸í•´ ì£¼ì„¸ìš”.');");
+>>>>>>> master
 			writer.println("</script>");
 			writer.flush();
 			return "/findid";		
@@ -112,13 +140,18 @@ public class MemberController {
 		return null;
 	}
 
-	//ºñ¹Ğ¹øÈ£Ã£±âÆäÀÌÁö
+<<<<<<< HEAD
+	//ï¿½ï¿½Ğ¹ï¿½È£Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+=======
+	//ë¹„ë°€ë²ˆí˜¸ì°¾ê¸°í˜ì´ì§€
+>>>>>>> master
 	@RequestMapping("findpw.mem")
 	public String findpw() {
 		return "/findpw";
 	}	
 	
-	//ºñ¹Ğ¹øÈ£Ã£±â¿¡¼­ ÀÓ½Ã¹ß±Ş
+<<<<<<< HEAD
+	//ï¿½ï¿½Ğ¹ï¿½È£Ã£ï¿½â¿¡ï¿½ï¿½ ï¿½Ó½Ã¹ß±ï¿½
 	@RequestMapping(value = "findpw.mem", method=RequestMethod.POST)
 	public String findpw2(
 			@ModelAttribute("member") @Valid MemberBean member,
@@ -135,29 +168,29 @@ public class MemberController {
 		PrintWriter out = response.getWriter();
 		
 		if(memberDao.selectPwByIdEmail(member.getMember_id()) == null) {
-			out.print("<script>alert('¾ÆÀÌµğ¸¦ È®ÀÎÇØÁÖ¼¼¿ä.'); history.back(-1);</script>");
+			out.print("<script>alert('ï¿½ï¿½ï¿½Ìµï¿½ È®ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.'); history.back(-1);</script>");
 			out.close();
 		}
 		
 		else if(!member.getMember_email().equals(mb.getMember_email())) {
-			out.print("<script>alert('ÀÌ¸ŞÀÏÀ» È®ÀÎÇØÁÖ¼¼¿ä.'); history.back(-1);</script>");
+			out.print("<script>alert('ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.'); history.back(-1);</script>");
 			out.close();
 			
 		}
 		else {
-			//ºñ¹Ğ¹øÈ£ °®°í¿À±â
+			//ï¿½ï¿½Ğ¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			String pw = "";
 			for (int i = 0; i < 12; i++) {
 				pw += (char) ((Math.random() * 26) + 97);
 			}
 			member.setMember_pw(pw);
-			// ºñ¹Ğ¹øÈ£ º¯°æ
+			// ï¿½ï¿½Ğ¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½
 			memberDao.updatePw(member);
 			
-			// ºñ¹Ğ¹øÈ£ º¯°æ ¸ŞÀÏ ¹ß¼Û
+			// ï¿½ï¿½Ğ¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß¼ï¿½
 			sendEmail(member, "findpw");
 			
-			out.print("<script>alert('ÀÌ¸ŞÀÏ·Î ÀÓ½Ã ºñ¹Ğ¹øÈ£¸¦ ¹ß¼ÛÇÏ¿´½À´Ï´Ù.'); location.href='login.mem'</script>");
+			out.print("<script>alert('ï¿½Ì¸ï¿½ï¿½Ï·ï¿½ ï¿½Ó½ï¿½ ï¿½ï¿½Ğ¹ï¿½È£ï¿½ï¿½ ï¿½ß¼ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.'); location.href='login.mem'</script>");
 			out.close();
 			
 		}
@@ -165,7 +198,7 @@ public class MemberController {
 		return "/login";
 	}
 
-	//ºñ¹Ğ¹øÈ£Ã£±â¿¡¼­ ÀÓ½Ãºñ¹Ğ¹øÈ£ ÀÌ¸ŞÀÏ ¹ß¼Û
+	//ï¿½ï¿½Ğ¹ï¿½È£Ã£ï¿½â¿¡ï¿½ï¿½ ï¿½Ó½Ãºï¿½Ğ¹ï¿½È£ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ß¼ï¿½
 	private void sendEmail(MemberBean member, String div) {
 		String charSet = "utf-8";
 		String hostSMTP = "smtp.naver.com";
@@ -178,13 +211,13 @@ public class MemberController {
 		String msg = "";
 		
 		if(div.equals("findpw")) {
-			subject = "Nyom È¸¿ø´Ô ÀÓ½Ã ºñ¹Ğ¹øÈ£ ¹ß¼Û";
+			subject = "Nyom È¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ ï¿½ï¿½Ğ¹ï¿½È£ ï¿½ß¼ï¿½";
 			msg += "<div align='center' font-family:verdana'>";
-			msg += "<h2><p> ¾È³çÇÏ¼¼¿ä. <br>";
-			msg += member.getMember_id() + "´ÔÀÇ ÀÓ½Ã ºñ¹Ğ¹øÈ£ ÀÔ´Ï´Ù.</h2>";
-			msg += "<p> ÀÓ½Ã ºñ¹Ğ¹øÈ£ : ";
+			msg += "<h2><p> ï¿½È³ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½. <br>";
+			msg += member.getMember_id() + "ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ ï¿½ï¿½Ğ¹ï¿½È£ ï¿½Ô´Ï´ï¿½.</h2>";
+			msg += "<p> ï¿½Ó½ï¿½ ï¿½ï¿½Ğ¹ï¿½È£ : ";
 			msg += member.getMember_pw() + "</p>";
-			msg += "<p>¡ØÀÓ½Ã ºñ¹Ğ¹øÈ£´Â ½ÃÀÏ ³» º¯°æÇÏ¿© ¾ÈÀüÇÏ°Ô °èÁ¤À» °ü¸®ÇÏ¼¼¿ä.</p></div>";
+			msg += "<p>ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½Ğ¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½.</p></div>";
 		}
 		
 		String mail = member.getMember_email();
@@ -203,30 +236,36 @@ public class MemberController {
 			email.setHtmlMsg(msg);
 			email.send();
 		} catch (Exception e) {
-			System.out.println("¸ŞÀÏ¹ß¼Û ½ÇÆĞ : " + e);
+			System.out.println("ï¿½ï¿½ï¿½Ï¹ß¼ï¿½ ï¿½ï¿½ï¿½ï¿½ : " + e);
 		}
 		
 	}
 	
-	//¸¶ÀÌÆäÀÌÁö
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("mypage.mem")
 	public String mypage() {
 		return "/mypage";
 	}
 	
-	//¸¶ÀÌÆäÀÌÁö ºñ¹Ğ¹øÈ£ ÀÔ·Â
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ğ¹ï¿½È£ ï¿½Ô·ï¿½
 	@RequestMapping(value="mypage.mem", method=RequestMethod.POST)
 	public ModelAndView mypage(MemberBean memberBean,
+=======
+	//ë¹„ë°€ë²ˆí˜¸ì°¾ê¸°
+	@RequestMapping(value="findpw.mem", method=RequestMethod.POST)
+	public String findpw(MemberBean memberBean,
+>>>>>>> master
 			HttpServletResponse response,
 			HttpSession session) throws IOException{
 
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter writer=response.getWriter();
 		
+<<<<<<< HEAD
 		ModelAndView mav = new ModelAndView();
 		MemberBean mypage=memberDao.selectMemberByIdPw(memberBean);
 		
-		//ºñ¹Ğ¹øÈ£ ÀÏÄ¡ÇÏ¸é ³»Á¤º¸¼öÁ¤ÆäÀÌÁö·Î
+		//ï¿½ï¿½Ğ¹ï¿½È£ ï¿½ï¿½Ä¡ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if(mypage!=null) {
 			mav.addObject("mypage", mypage);
 			mav.setViewName("/updatemem");
@@ -234,17 +273,35 @@ public class MemberController {
 		}
 		else if(mypage==null) {
 			writer.println("<script type='text/javascript'>");
-			writer.println("alert('ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä.');");
+			writer.println("alert('ï¿½ï¿½Ğ¹ï¿½È£ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.');");
 			writer.println("</script>");
 			writer.flush();
 			
 			mav.setViewName("/mypage");
 			return mav;		
+=======
+		MemberBean findpw=memberDao.selectPwByIdEmail(memberBean);
+		
+		if(findpw!=null) {
+			writer.println("<script type='text/javascript'>");
+			writer.println("alert('"+memberBean.getMember_id()+"ë‹˜ì˜ ë¹„ë°€ë²ˆí˜¸ëŠ” "+findpw.getMember_pw()+" ì…ë‹ˆë‹¤.');");
+			writer.println("</script>");
+			writer.flush();
+			return "/login";
+		}
+		else if(findpw==null) {
+			writer.println("<script type='text/javascript'>");
+			writer.println("alert('ì…ë ¥ì •ë³´ë¥¼ í™•ì¸í•´ ì£¼ì„¸ìš”.');");
+			writer.println("</script>");
+			writer.flush();
+			return "/findpw";		
+>>>>>>> master
 		}
 		return null;
 	}
 	
-	//³»Á¤º¸¼öÁ¤
+<<<<<<< HEAD
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value="updatemem.mem", method=RequestMethod.POST)
 	public ModelAndView updatemem(@ModelAttribute("memberBean") @Valid MemberBean memberBean, BindingResult result) {
 		
@@ -262,13 +319,13 @@ public class MemberController {
 		return mav;
 	}
 	
-	//È¸¿ø°¡ÀÔÆäÀÌÁö
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("join.mem")
 	public String joinPage() {
 		return "/join";
 	}
 	
-	//È¸¿ø°¡ÀÔ
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value="join.mem", method=RequestMethod.POST)
 	public ModelAndView join(@ModelAttribute("memberBean") @Valid MemberBean memberBean, BindingResult result) {
 		
@@ -283,14 +340,14 @@ public class MemberController {
 		return mav;
 	}
 	
-	// ¾ÆÀÌµğ Áßº¹Ã¼Å©
+	// ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½Ã¼Å©
 	@RequestMapping("/checkId.mem")
 	public @ResponseBody int checkId(String id) {
 		int result = memberDao.checkId(id);
 		return result;
 	}	
 	
-	//È¸¿øÅ»Åğ
+	//È¸ï¿½ï¿½Å»ï¿½ï¿½
 	@RequestMapping("unjoin.mem")
 	public String unjoin(String member_id,
 			HttpServletResponse response,
@@ -304,11 +361,73 @@ public class MemberController {
 		if(deletemem==1) {
 			session.removeAttribute("loginInfo");
 			writer.println("<script type='text/javascript'>");
-			writer.println("alert('Å»Åğ°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.');");
+			writer.println("alert('Å»ï¿½ï¿½ ï¿½Ï·ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.');");
 			writer.println("location.href='main.fs'");
 			writer.println("</script>");
 			writer.flush();
 		}
 		return null;
 	}
+=======
+	//ë§ˆì´í˜ì´ì§€
+	@RequestMapping("mypage.mem")
+	public String mypage() {
+		return "/mypage";
+	}
+	
+	//ë§ˆì´í˜ì´ì§€ ë¹„ë°€ë²ˆí˜¸ ì…ë ¥
+	@RequestMapping(value="mypage.mem", method=RequestMethod.POST)
+	public String mypage(MemberBean memberBean,
+			HttpServletResponse response,
+			HttpSession session) throws IOException{
+
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter writer=response.getWriter();
+		
+		MemberBean mypage=memberDao.selectMemberByIdPw(memberBean);
+		
+		//ë¹„ë°€ë²ˆí˜¸ ì¼ì¹˜í•˜ë©´ ë‚´ì •ë³´ìˆ˜ì •í˜ì´ì§€ë¡œ
+		if(mypage!=null) {
+			return "/updatemem";
+		}
+		else if(mypage==null) {
+			writer.println("<script type='text/javascript'>");
+			writer.println("alert('ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ ì£¼ì„¸ìš”.');");
+			writer.println("</script>");
+			writer.flush();
+			return "/mypage";		
+		}
+		return null;
+	}
+	
+	//ë‚´ì •ë³´ìˆ˜ì •
+	@RequestMapping(value="updatemem.mem", method=RequestMethod.POST)
+	public String updatemem(MemberBean memberBean,
+			HttpServletResponse response,
+			HttpSession session) throws IOException{
+
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter writer=response.getWriter();
+		
+		int updatemem=memberDao.updateMemberById(memberBean);
+		System.out.println(updatemem);
+		/*
+		if(updatemem!=null) {
+			writer.println("<script type='text/javascript'>");
+			writer.println("alert('"+memberBean.getMember_id()+"ë‹˜ì˜ ë¹„ë°€ë²ˆí˜¸ëŠ” "+updatemem.getMember_pw()+" ì…ë‹ˆë‹¤.');");
+			writer.println("</script>");
+			writer.flush();
+			return "/login";
+		}
+		else if(updatemem==null) {
+			writer.println("<script type='text/javascript'>");
+			writer.println("alert('ì…ë ¥ì •ë³´ë¥¼ í™•ì¸í•´ ì£¼ì„¸ìš”.');");
+			writer.println("</script>");
+			writer.flush();
+			return "/findpw";		
+		}
+		*/
+		return "/mypage.";
+	}	
+>>>>>>> master
 }

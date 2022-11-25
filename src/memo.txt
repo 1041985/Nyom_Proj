@@ -1,6 +1,6 @@
--- ÁøÂ¥ Âğ Å×ÀÌºí ÃÖÁ¾º»
+--ê³µì§€ì‚¬í•­ í…Œì´ë¸” ìˆ˜ì •í–ˆì–´ìš¤.. 11.17
 
---[Âò (Wish)]
+--[ì°œ (Wish)]
 drop sequence wish_seq;
 create sequence wish_seq
 increment by 1
@@ -11,15 +11,15 @@ nocache;
 DROP TABLE wish CASCADE CONSTRAINTS;
 create table wish(
    wish_no number primary key, --pk
-   member_no number references member(member_no) on delete cascade, -- È¸¿ø(´©°¡¾´°ÇÁö) fk
-   store_no number -- ¸ÀÁı(ÂòÇÑ ¾÷Ã¼µé) 
+   member_no number references member(member_no) on delete cascade, -- íšŒì›(ëˆ„ê°€ì“´ê±´ì§€) fk
+   store_no number -- ë§›ì§‘(ì°œí•œ ì—…ì²´ë“¤) 
 );
 
 commit;
 
 -------------------------------------------------------------------------------
 
---[°øÁö»çÇ× (notice)]
+--[ê³µì§€ì‚¬í•­ (notice)]
          
 drop sequence notiseq;            
 create sequence notiseq            
@@ -32,26 +32,43 @@ create table notice(
    no number not null primary key,      
    subject varchar2(100) not null,   
    writer varchar2(50) not null,               
-   reg_date date default sysdate, --ÀÛ¼ºÀÏ               
-   content varchar2(500),         
+   reg_date date default sysdate, --ì‘ì„±ì¼ 
+   open varchar2(50) default 'ì „ì²´ê³µê°œ',            
+   content varchar2(700),         
    image varchar2(500),   
-   readcount number default 0 -- Á¶È¸¼ö         
+   readcount number default 0 -- ì¡°íšŒìˆ˜         
 );               
    
-insert into notice(no,subject,writer,image)            
-values(notiseq.nextval,'¸®ºä½Ã ¿À·ù °ü·Ã °øÁö»çÇ×','admin','°øÁö»çÇ×°Ô½ÃÆÇ1.png');            
+insert into notice(no,subject,writer,content)            
+values(notiseq.nextval,'ì„œë¹„ìŠ¤ ì ê²€ ì•ˆë‚´','admin',
+'ì•ˆë…•í•˜ì„¸ìš”. ë‡¸ì…ë‹ˆë‹¤.<br>
+ê°œì¸ì •ë³´ ë³´í˜¸ë¥¼ ìœ„í•´ ì•„ë˜ì™€ ê°™ì´ ê°œì¸ì •ë³´ ì²˜ë¦¬ë°©ì¹¨ì´ 2022ë…„ 11ì›” 21ì¼ë¶€ë¡œ ì¼ë¶€ ê°œì •ë˜ì—ˆìŠµë‹ˆë‹¤.
+ì´ì— ê°œì •ëœ ì£¼ìš” ë‚´ìš©ì„ ì•ˆë‚´ ë“œë¦¬ì˜¤ë‹ˆ,
+íšŒì› ì—¬ëŸ¬ë¶„ê»˜ì„œëŠ” ë³€ê²½ë˜ëŠ” ë‚´ìš©ì„ í™•ì¸í•˜ì—¬ ì£¼ì‹œê¸°ë¥¼ ë‹¹ë¶€ë“œë¦½ë‹ˆë‹¤.<br><br>
+1. ê°œì • ì£¼ìš” ì‚¬ìœ <br>
+  - ê°œì¸ì •ë³´ ë³´í˜¸ë²• ì¤€ìˆ˜ë¥¼ ìœ„í•´ ê°œì¸ì •ë³´ ìˆ˜ì§‘ Â· ì´ìš© ì¤‘ì¸ í•­ëª©ì„ ëˆ„ë½ì—†ì´ ê³ ì§€í•˜ê³ ,
+     ì¼ë°˜ì¸ì´ ì´í•´í•  ìˆ˜ ìˆë„ë¡ ì‰½ê³  ëª…í™•í•˜ê²Œ ì²˜ë¦¬ë°©ì¹¨ì„ ê°œì„ í•˜ì˜€ìŠµë‹ˆë‹¤. ');
+            
 insert into notice(no,subject,writer,image)         
-values(notiseq.nextval,'¸®ºä Âü¿©½Ã ÀÌº¥Æ®(ÀÌº¥Æ®)','admin','°øÁö»çÇ×4.png');               
+values(notiseq.nextval,'ê°€ë¡œ ì„¸ë¡œ í€´ì¦ˆ ì´ë²¤íŠ¸ ë‹¹ì²¨ì ë°œí‘œ!','admin','ì´ë²¤íŠ¸ë‹¹ì²¨ìë°œí‘œ.jpg');               
 insert into notice(no,subject,writer,image)         
-values(notiseq.nextval,'ÀÚÁÖ ¹¯´Â Áú¹®','admin','°øÁö»çÇ×4.png');            
+values(notiseq.nextval,'ë‡¸ ì‘ì›ëŒ“ê¸€ ì´ë²¤íŠ¸!','admin','ì´ë²¤íŠ¸.jpg');            
 
+col no for 99
+col subject for a15
+col writer for a10
+col content for a15
+col image for a15
+col open for a15
 commit;   
 
 select * from notice;    
 
+
 -------------------------------------------------------------------------------
 
---member(È¸¿ø)
+
+--member(íšŒì›)
 
 drop sequence member_seq;
 create sequence member_seq
@@ -61,38 +78,38 @@ nocache;
 
 drop table member cascade constraints;
 create table member(
-   member_no number primary key, --È¸¿ø ¹øÈ£
-   member_id varchar2(100), --È¸¿ø ¾ÆÀÌµğ
-   member_pw varchar2(100), --È¸¿ø ºñ¹Ğ¹øÈ£
-   member_name varchar2(100), --È¸¿ø ÀÌ¸§
-   member_email varchar2(100), --È¸¿ø ÀÌ¸ŞÀÏ
-   member_hp varchar2(100), --È¸¿ø ÀüÈ­¹øÈ£
-   member_date date --È¸¿ø °¡ÀÔÀÏ
+   member_no number primary key, --íšŒì› ë²ˆí˜¸
+   member_id varchar2(100), --íšŒì› ì•„ì´ë””
+   member_pw varchar2(100), --íšŒì› ë¹„ë°€ë²ˆí˜¸
+   member_name varchar2(100), --íšŒì› ì´ë¦„
+   member_email varchar2(100), --íšŒì› ì´ë©”ì¼
+   member_hp varchar2(100), --íšŒì› ì „í™”ë²ˆí˜¸
+   member_date date --íšŒì› ê°€ì…ì¼
 );
 insert into member values(
-	member_seq.nextval,
-	'admin',
-	'0000',
-	'°ü¸®ÀÚ',
-	'admin@google.com',
-	'01000000001',
-	sysdate
+   member_seq.nextval,
+   'admin',
+   '0000',
+   'ê´€ë¦¬ì',
+   'admin@google.com',
+   '010-0000-0001',
+   sysdate
 );
 insert into member values(
-	member_seq.nextval,
-	'user',
-	'0000',
-	'»ç¿ëÀÚ',
-	'user@google.com',
-	'01000000002',
-	sysdate
+   member_seq.nextval,
+   'user',
+   '0000',
+   'ì‚¬ìš©ì',
+   'user@google.com',
+   '010-0000-0002',
+   sysdate
 );
-commit;  
+commit;   
 
 
 --------------------------------------------------------------------------------------
 
---¾÷Ã¼(foodstore) Å×ÀÌºí
+ì—…ì²´(foodstore) í…Œì´ë¸”
 
 drop sequence foodstore_seq;
 
@@ -107,16 +124,15 @@ DROP TABLE foodstore CASCADE CONSTRAINTS;
 
 create table foodstore(
 store_no number primary key,
-store_name varchar2(50),--»óÈ£¸í
-store_addr varchar2(50),--ÁÖ¼Ò
-store_tel varchar2(15),--ÀüÈ­¹øÈ£
-open_hours varchar2(20),--¿ÀÇÂ½Ã°£
-close_hours varchar2(20),--¸¶°¨½Ã°£
-store_img varchar2(2000),--°¡°ÔÀÌ¹ÌÁö
-menu varchar2(100),--¸Ş´º
-hashtag varchar2(50),--ÇØ½ÃÅÂ±×
-readcount number default 0,--Á¶È¸¼ö
-store_contents varchar2(50) --°¡°Ô¼³¸í
+store_name varchar2(50),--ìƒí˜¸ëª…
+store_addr varchar2(50),--ì£¼ì†Œ
+store_tel varchar2(15),--ì „í™”ë²ˆí˜¸
+business_hours varchar2(20),--ì˜ì—…ì‹œê°„
+store_img varchar2(2000),--ê°€ê²Œì´ë¯¸ì§€
+menu varchar2(100),--ë©”ë‰´
+hashtag varchar2(50),--í•´ì‹œíƒœê·¸
+readcount number default 0,--ì¡°íšŒìˆ˜
+store_date date default sysdate--ë“±ë¡ì¼
 );
 
 commit;  
@@ -124,7 +140,7 @@ commit;
 
 --------------------------------------------------------------------------------------
 
--- Q&A Å×ÀÌºí
+-- Q&A í…Œì´ë¸”
 
 drop sequence qna_seq;
 create sequence qna_seq
@@ -152,7 +168,7 @@ commit;
 
 --------------------------------------------------------------------------------------
 
--- ¸®ºä Å×ÀÌºí
+-- ë¦¬ë·° í…Œì´ë¸”
 
 
 drop sequence rv_seq;

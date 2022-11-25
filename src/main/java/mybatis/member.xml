@@ -13,7 +13,7 @@
  	
  	<!-- 아이디찾기 -->
  	<select id="SelectIdByNameEmail" resultType="MyMember">
- 		select member_id from member
+ 		select member_id afrom member
  		where member_name=#{member_name} and member_email=#{member_email}
  	</select>
  	

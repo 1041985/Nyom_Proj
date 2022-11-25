@@ -4,7 +4,64 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="foodstore.model.foodstore">
-  
+  	<select id="GetAllFoodStore" resultType="MyFoodstore">
+		select * from foodstore
+		order by store_no
+	</select>
+	
+	<insert id="Insertfoodstore">
+		insert into foodstore(store_no,store_name,store_addr,store_tel,open_hours,close_hours,store_img,menu,hashtag,store_contents)
+      	values(foodstore_seq.nextval,#{store_name},#{store_addr},#{store_tel},#{open_hours},#{close_hours}
+            ,#{store_img},#{menu},#{hashtag},#{store_contents})
+	</insert>
+	
+
+	<select id="SelectWishByMember_no" resultType="foodstore.model.WishBean">
+		select * from wish
+		where member_no = #{member_no}	
+	</select>
+	
+	<select id="GetStoreByStore_no" resultType="MyFoodstore">
+		select * from foodstore
+		where store_no = #{store_no}			
+	</select>
+
+	<delete id="DeleteWish">
+		delete wish
+		where store_no = #{store_no} and member_no = #{member_no}
+	</delete>
+	
+	
+	
+	<!-- 업체상세보기 -->
+	<select id="SelectFoodstore" resultType="MyFoodstore">
+		SELECT * FROM FOODSTORE
+		WHERE store_no=#{store_no}
+	</select>
+	
+	<!-- 업체수정 -->
+	<update id="UpdateFoodstore">
+		UPDATE FOODSTORE
+		SET
+			store_name=#{store_name},
+			store_addr=#{store_addr},
+			store_tel=#{store_tel},
+			open_hours=#{open_hours},
+			close_hours=#{close_hours},
+			store_img=#{store_img},
+			menu=#{menu},
+			hashtag=#{hashtag},
+			store_contents=#{store_contents}
+		WHERE
+			store_no=#{store_no}
+	</update>
+	
+	<delete id="DeleteFoodstore">
+		DELETE FOODSTORE
+		WHERE store_no=#{store_no}
+		
+	</delete>
+	
   </mapper>
   
   <!-- foodstore.xml -->
