@@ -26,14 +26,12 @@ public class MemberController {
 	@Autowired
 	MemberDAO memberDao;
 	
-
 	//로그인페이지
 	@RequestMapping("login.mem")
 	public String loginPage() {
 		return "/login";
 	}
 	
-
 	//로그인
 	@RequestMapping(value="login.mem", method=RequestMethod.POST)
 	public String login(MemberBean memberBean,
@@ -47,9 +45,7 @@ public class MemberController {
 		
 		if(loginInfo==null) {
 			writer.println("<script type='text/javascript'>");
-
-			writer.println("alert('아이디를 확인해 주세요.');");
-
+			writer.println("alert('아이디를 확인해주세요.');");
 			writer.println("</script>");
 			writer.flush();
 			return "/login";		
@@ -62,8 +58,7 @@ public class MemberController {
 			}
 			else {
 				writer.println("<script type='text/javascript'>");
-
-				writer.println("alert('비밀번호를 확인해 주세요.');");
+				writer.println("alert('비밀번호를 확인해주세요.');");
 				writer.println("</script>");
 				writer.flush();
 				return "/login";
@@ -71,8 +66,7 @@ public class MemberController {
 		}
 	}
 	
-<<<<<<< HEAD
-	//�α׾ƿ�
+	//로그아웃
 	@RequestMapping("logout.mem")
 	public String logout(HttpSession session, 
 			HttpServletResponse response) throws IOException {
@@ -84,27 +78,13 @@ public class MemberController {
 		return "redirect:/main.fs";
 	}
 	
-	//���̵�ã��������
-=======
-	//로그아웃
-	@RequestMapping("logout.mem")
-	public String logout(HttpSession session) {
-		session.removeAttribute("loginInfo");
-		return "redirect:/main.fs";
-	}
-	
 	//아이디찾기페이지
->>>>>>> master
 	@RequestMapping("findid.mem")
 	public String findid() {
 		return "/findid";
 	}
 	
-<<<<<<< HEAD
-	//���̵�ã��
-=======
 	//아이디찾기
->>>>>>> master
 	@RequestMapping(value="findid.mem", method=RequestMethod.POST)
 	public String findid(MemberBean memberBean,
 			HttpServletResponse response,
@@ -117,22 +97,14 @@ public class MemberController {
 		
 		if(findid!=null) {
 			writer.println("<script type='text/javascript'>");
-<<<<<<< HEAD
-			writer.println("alert('"+memberBean.getMember_name()+"���� ���̵�� "+findid.getMember_id()+" �Դϴ�.');");
-=======
 			writer.println("alert('"+memberBean.getMember_name()+"님의 아이디는 "+findid.getMember_id()+" 입니다.');");
->>>>>>> master
 			writer.println("</script>");
 			writer.flush();
 			return "/login";
 		}
 		else if(findid==null) {
 			writer.println("<script type='text/javascript'>");
-<<<<<<< HEAD
-			writer.println("alert('�Է������� Ȯ�����ּ���.');");
-=======
-			writer.println("alert('입력정보를 확인해 주세요.');");
->>>>>>> master
+			writer.println("alert('입력정보를 확인해주세요.');");
 			writer.println("</script>");
 			writer.flush();
 			return "/findid";		
@@ -140,18 +112,13 @@ public class MemberController {
 		return null;
 	}
 
-<<<<<<< HEAD
-	//��й�ȣã��������
-=======
 	//비밀번호찾기페이지
->>>>>>> master
 	@RequestMapping("findpw.mem")
 	public String findpw() {
 		return "/findpw";
 	}	
 	
-<<<<<<< HEAD
-	//��й�ȣã�⿡�� �ӽù߱�
+	//비밀번호찾기
 	@RequestMapping(value = "findpw.mem", method=RequestMethod.POST)
 	public String findpw2(
 			@ModelAttribute("member") @Valid MemberBean member,
@@ -168,29 +135,29 @@ public class MemberController {
 		PrintWriter out = response.getWriter();
 		
 		if(memberDao.selectPwByIdEmail(member.getMember_id()) == null) {
-			out.print("<script>alert('���̵� Ȯ�����ּ���.'); history.back(-1);</script>");
+			out.print("<script>alert('아이디를 확인해주세요.'); history.back(-1);</script>");
 			out.close();
 		}
 		
 		else if(!member.getMember_email().equals(mb.getMember_email())) {
-			out.print("<script>alert('�̸����� Ȯ�����ּ���.'); history.back(-1);</script>");
+			out.print("<script>alert('이메일을 확인해주세요.'); history.back(-1);</script>");
 			out.close();
 			
 		}
 		else {
-			//��й�ȣ �������
+			//비밀번호 갖고오기
 			String pw = "";
 			for (int i = 0; i < 12; i++) {
 				pw += (char) ((Math.random() * 26) + 97);
 			}
 			member.setMember_pw(pw);
-			// ��й�ȣ ����
+			// 비밀번호 변경
 			memberDao.updatePw(member);
 			
-			// ��й�ȣ ���� ���� �߼�
+			// 비밀번호 변경 메일 발송
 			sendEmail(member, "findpw");
 			
-			out.print("<script>alert('�̸��Ϸ� �ӽ� ��й�ȣ�� �߼��Ͽ����ϴ�.'); location.href='login.mem'</script>");
+			out.print("<script>alert('이메일로 임시 비밀번호를 발송하였습니다.'); location.href='login.mem'</script>");
 			out.close();
 			
 		}
@@ -198,7 +165,7 @@ public class MemberController {
 		return "/login";
 	}
 
-	//��й�ȣã�⿡�� �ӽú�й�ȣ �̸��� �߼�
+	//비밀번호찾기에서 임시비밀번호 이메일 발송
 	private void sendEmail(MemberBean member, String div) {
 		String charSet = "utf-8";
 		String hostSMTP = "smtp.naver.com";
@@ -211,13 +178,13 @@ public class MemberController {
 		String msg = "";
 		
 		if(div.equals("findpw")) {
-			subject = "Nyom ȸ���� �ӽ� ��й�ȣ �߼�";
+			subject = "Nyom 회원님 임시 비밀번호 발송";
 			msg += "<div align='center' font-family:verdana'>";
-			msg += "<h2><p> �ȳ��ϼ���. <br>";
-			msg += member.getMember_id() + "���� �ӽ� ��й�ȣ �Դϴ�.</h2>";
-			msg += "<p> �ӽ� ��й�ȣ : ";
+			msg += "<h2><p> 안녕하세요. <br>";
+			msg += member.getMember_id() + "님의 임시 비밀번호 입니다.</h2>";
+			msg += "<p> 임시 비밀번호 : ";
 			msg += member.getMember_pw() + "</p>";
-			msg += "<p>���ӽ� ��й�ȣ�� ���� �� �����Ͽ� �����ϰ� ������ �����ϼ���.</p></div>";
+			msg += "<p>※임시 비밀번호는 시일 내 변경하여 안전하게 계정을 관리하세요.</p></div>";
 		}
 		
 		String mail = member.getMember_email();
@@ -236,36 +203,30 @@ public class MemberController {
 			email.setHtmlMsg(msg);
 			email.send();
 		} catch (Exception e) {
-			System.out.println("���Ϲ߼� ���� : " + e);
+			System.out.println("메일발송 실패 : " + e);
 		}
 		
 	}
 	
-	//����������
+	//마이페이지
 	@RequestMapping("mypage.mem")
 	public String mypage() {
 		return "/mypage";
 	}
 	
-	//���������� ��й�ȣ �Է�
+	//마이페이지 비밀번호 입력
 	@RequestMapping(value="mypage.mem", method=RequestMethod.POST)
 	public ModelAndView mypage(MemberBean memberBean,
-=======
-	//비밀번호찾기
-	@RequestMapping(value="findpw.mem", method=RequestMethod.POST)
-	public String findpw(MemberBean memberBean,
->>>>>>> master
 			HttpServletResponse response,
 			HttpSession session) throws IOException{
 
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter writer=response.getWriter();
 		
-<<<<<<< HEAD
 		ModelAndView mav = new ModelAndView();
 		MemberBean mypage=memberDao.selectMemberByIdPw(memberBean);
 		
-		//��й�ȣ ��ġ�ϸ� ������������������
+		//비밀번호 일치하면 내정보수정페이지로
 		if(mypage!=null) {
 			mav.addObject("mypage", mypage);
 			mav.setViewName("/updatemem");
@@ -273,44 +234,26 @@ public class MemberController {
 		}
 		else if(mypage==null) {
 			writer.println("<script type='text/javascript'>");
-			writer.println("alert('��й�ȣ�� Ȯ�����ּ���.');");
+			writer.println("alert('비밀번호를 확인해주세요.');");
 			writer.println("</script>");
 			writer.flush();
 			
 			mav.setViewName("/mypage");
 			return mav;		
-=======
-		MemberBean findpw=memberDao.selectPwByIdEmail(memberBean);
-		
-		if(findpw!=null) {
-			writer.println("<script type='text/javascript'>");
-			writer.println("alert('"+memberBean.getMember_id()+"님의 비밀번호는 "+findpw.getMember_pw()+" 입니다.');");
-			writer.println("</script>");
-			writer.flush();
-			return "/login";
-		}
-		else if(findpw==null) {
-			writer.println("<script type='text/javascript'>");
-			writer.println("alert('입력정보를 확인해 주세요.');");
-			writer.println("</script>");
-			writer.flush();
-			return "/findpw";		
->>>>>>> master
 		}
 		return null;
 	}
 	
-<<<<<<< HEAD
-	//����������
+	//내정보수정
 	@RequestMapping(value="updatemem.mem", method=RequestMethod.POST)
 	public ModelAndView updatemem(@ModelAttribute("memberBean") @Valid MemberBean memberBean, BindingResult result) {
 		
 		ModelAndView mav=new ModelAndView();
 
-		memberBean=memberDao.selectMemberByIdPw(memberBean);
+		MemberBean mypage=memberDao.selectMemberByIdPw(memberBean);
 		
 		if(result.hasErrors()) {
-			mav.addObject("memberBean", memberBean);
+			mav.addObject("mypage", mypage);
 			mav.setViewName("/updatemem");
 			return mav;
 		}
@@ -319,13 +262,13 @@ public class MemberController {
 		return mav;
 	}
 	
-	//ȸ������������
+	//회원가입페이지
 	@RequestMapping("join.mem")
 	public String joinPage() {
 		return "/join";
 	}
 	
-	//ȸ������
+	//회원가입
 	@RequestMapping(value="join.mem", method=RequestMethod.POST)
 	public ModelAndView join(@ModelAttribute("memberBean") @Valid MemberBean memberBean, BindingResult result) {
 		
@@ -340,14 +283,14 @@ public class MemberController {
 		return mav;
 	}
 	
-	// ���̵� �ߺ�üũ
+	// 아이디 중복체크
 	@RequestMapping("/checkId.mem")
 	public @ResponseBody int checkId(String id) {
 		int result = memberDao.checkId(id);
 		return result;
 	}	
 	
-	//ȸ��Ż��
+	//회원탈퇴
 	@RequestMapping("unjoin.mem")
 	public String unjoin(String member_id,
 			HttpServletResponse response,
@@ -361,73 +304,11 @@ public class MemberController {
 		if(deletemem==1) {
 			session.removeAttribute("loginInfo");
 			writer.println("<script type='text/javascript'>");
-			writer.println("alert('Ż�� �Ϸ�Ǿ����ϴ�.');");
+			writer.println("alert('탈퇴가 완료되었습니다.');");
 			writer.println("location.href='main.fs'");
 			writer.println("</script>");
 			writer.flush();
 		}
 		return null;
 	}
-=======
-	//마이페이지
-	@RequestMapping("mypage.mem")
-	public String mypage() {
-		return "/mypage";
-	}
-	
-	//마이페이지 비밀번호 입력
-	@RequestMapping(value="mypage.mem", method=RequestMethod.POST)
-	public String mypage(MemberBean memberBean,
-			HttpServletResponse response,
-			HttpSession session) throws IOException{
-
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter writer=response.getWriter();
-		
-		MemberBean mypage=memberDao.selectMemberByIdPw(memberBean);
-		
-		//비밀번호 일치하면 내정보수정페이지로
-		if(mypage!=null) {
-			return "/updatemem";
-		}
-		else if(mypage==null) {
-			writer.println("<script type='text/javascript'>");
-			writer.println("alert('비밀번호를 확인해 주세요.');");
-			writer.println("</script>");
-			writer.flush();
-			return "/mypage";		
-		}
-		return null;
-	}
-	
-	//내정보수정
-	@RequestMapping(value="updatemem.mem", method=RequestMethod.POST)
-	public String updatemem(MemberBean memberBean,
-			HttpServletResponse response,
-			HttpSession session) throws IOException{
-
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter writer=response.getWriter();
-		
-		int updatemem=memberDao.updateMemberById(memberBean);
-		System.out.println(updatemem);
-		/*
-		if(updatemem!=null) {
-			writer.println("<script type='text/javascript'>");
-			writer.println("alert('"+memberBean.getMember_id()+"님의 비밀번호는 "+updatemem.getMember_pw()+" 입니다.');");
-			writer.println("</script>");
-			writer.flush();
-			return "/login";
-		}
-		else if(updatemem==null) {
-			writer.println("<script type='text/javascript'>");
-			writer.println("alert('입력정보를 확인해 주세요.');");
-			writer.println("</script>");
-			writer.flush();
-			return "/findpw";		
-		}
-		*/
-		return "/mypage.";
-	}	
->>>>>>> master
 }
